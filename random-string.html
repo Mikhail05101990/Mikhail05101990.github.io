@@ -10,7 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-  <link rel="stylesheet" href="stylemain.css"/>
+  <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="listToDoController.js"></script>  
   
@@ -19,35 +19,22 @@
 
 <div ng-controller="ctrListToDO as testCtrl">
 
-<div class="left-area white">
+<div class="left-area">
 
-<md-list>
+<form ng-submit="testCtrl.addText(testCtrl.nameProject)" class = "project-panel white animationNormal">
 
-<md-list-item style = "background: red;">
-ЗАВЕРШЕННЫЕ ТЕСТОВЫЕ ЗАДАНИЯ
-</md-list-item>
-<md-list-item>
-    <md-button href="open-write-file.html">Расчет потерь</md-button>
-</md-list-item>
-<md-list-item>
-    <md-button href="random-string.html">Случайные строки</md-button>
-</md-list-item>
-
-</md-list>   
+<center>
+<h3> Click </h3>
+<input type="text" ng-model="testCtrl.nameProject">
+<md-button ng-disabled = "false" id ="btn1" type = "submit" ng-click="submitProject(); counterUp()" class="md-raised">add</md-button>
+</center>
+<p>{{item}}</p>
+<textarea style="overflow: hidden;" ng-model="testCtrl.textTask" class = "text3"></textarea>
+</form>
 
 </div>
 
-<md-content flex layout-padding class = "right-area">
-    
-<div class = "avatar">
-<img  src = "photo.jpg" class = "image-avatar"> 
-<h2 class = "text1">Павлович Михаил Сергеевич</h3>
-</img>	
 </div>
-
-</md-content>
-
-</div>>
-    
+   <p><a href="open-write-file.html">Наверх</a></p>
 </body>
 </html>

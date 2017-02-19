@@ -1,0 +1,218 @@
+@charset "UTF-8";
+/* ╤Ж╨▓╨╡╤В */
+/* ╤Ж╨▓╨╡╤В */
+/* ╤Ж╨▓╨╡╤В */
+/* ╨╛╤В╤Б╤В╤Г╨┐ */
+/* ╤А╨░╨╖╨╝╨╡╤А ╤В╨╡╨║╤Б╤В╨░ */
+/* line 21, ../sass/style.scss */
+.otctyp {
+  text-indent: 7%;
+  padding-right: 5%;
+  width: 98%; }
+
+/* line 35, ../sass/style.scss */
+.animationNormal {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: h0 0.5s linear all;
+  -ms-transition: 0.5s linear all;
+  transition: 0.3s linear all; }
+
+
+
+
+/* line 120, ../sass/style.scss */
+.panel-project {
+  position: absolute;
+  color: #5FFAFF;
+  top: 15%;
+  height: 5%;
+  left: 0%;
+  width: 100%; }
+
+/* line 130, ../sass/style.scss */
+.list-projects {
+  position: relative;
+  background: #000000;
+  top: 20%;
+  left: 0%;
+  width: 100%;
+  height: 80%; }
+
+/* line 144, ../sass/style.scss */
+md-list-item {
+  padding: 0% 0% 0% 12%; }
+
+/* line 149, ../sass/style.scss */
+md-list-item md-button {
+  padding: 0% 0% 0% 0%; }
+
+/* line 156, ../sass/style.scss */
+.height0 {
+  height: 0%; }
+
+/* line 161, ../sass/style.scss */
+.height100 {
+  height: 100%; }
+
+/* line 166, ../sass/style.scss */
+.width100 {
+  width: 100%; }
+
+/* line 170, ../sass/style.scss */
+.width95 {
+  width: 95%; }
+
+/* line 174, ../sass/style.scss */
+.width90 {
+  width: 90%; }
+
+/* line 178, ../sass/style.scss */
+.width80 {
+  width: 80%; }
+
+/* line 182, ../sass/style.scss */
+.width70 {
+  width: 70%; }
+
+/* line 186, ../sass/style.scss */
+.text-left {
+  text-align: left; }
+
+/* line 194, ../sass/style.scss */
+.date {
+  position: absolute;
+  left: 2.5%;
+  top: 15%; }
+
+/* line 201, ../sass/style.scss */
+.buttons-project {
+  position: absolute;
+  top: 65%;
+  width: 100%; }
+
+/* line 209, ../sass/style.scss */
+.buttons-task {
+  position: absolute;
+  bottom: 2%;
+  width: 100%;
+  text-align: left; }
+
+/* line 217, ../sass/style.scss */
+.text3 {
+  position: absolute;
+  bottom: 30%;
+  left: 2.5%;
+  width: 95%;
+  height: 40%; }
+
+/* line 226, ../sass/style.scss */
+.header1 {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  text-align: center;
+  font-size: 25px; }
+
+/* line 237, ../sass/style.scss */
+.list-tasks {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%; }
+
+/* line 247, ../sass/style.scss */
+.text1 {
+  position: absolute;
+  left: 30%;
+  top: 40%; }
+
+/* line 254, ../sass/style.scss */
+.text2 {
+  position: absolute;
+  left: 17%;
+  top: 15%; }
+
+/* line 261, ../sass/style.scss */
+.image-avatar {
+  position:relative;
+  width: 25%;
+  height: 25%;
+  top: 0%;
+  left:0%; }
+
+/* line 271, ../sass/style.scss */
+.button-task-show {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  opacity: 1; }
+
+/* line 279, ../sass/style.scss */
+.button-task-hide {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  opacity: 0; }
+
+/* line 288, ../sass/style.scss */
+.button-log-out {
+  position: absolute;
+  left: 5%;
+  top: 90%; }
+
+/* line 295, ../sass/style.scss */
+.button-edit {
+  position: absolute;
+  right: -3%;
+  top: -5%; }
+
+/* line 302, ../sass/style.scss */
+.button-search {
+  position: absolute;
+  left: 0%;
+  top: 0%; }
+
+/* line 309, ../sass/style.scss */
+.button-add-project {
+  position: absolute;
+  bottom: -60%;
+  right: -270%; }
+
+/* line 316, ../sass/style.scss */
+.avatar {
+  position: absolute;
+  vertical-align: middle;
+  top: 0%;
+  left:0%;
+  }
+
+/* line 326, ../sass/style.scss */
+.white {
+  color: #FFF4F0; }
+
+/* line 331, ../sass/style.scss */
+.searchPanel {
+  position: absolute;
+  top: -1%;
+  left: -1%;
+  width: 95.5%;
+  height: 10%; }
+
+/* line 340, ../sass/style.scss */
+.left-area {
+  position: absolute;
+  top: 0%;
+  width: 30%;
+  height: 100%;
+  background: #000000; }
+
+/* line 349, ../sass/style.scss */
+.right-area {
+  position: absolute;
+  top: 0%;
+  left: 30%;
+  width: 70%;
+  height: 100%;
+  background: #FFF4F0; }
