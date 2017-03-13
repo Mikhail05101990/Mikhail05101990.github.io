@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-  
+
 </head>
 <body>
 
@@ -30,11 +30,9 @@
 <md-list-item style = "background: red;">
 ЗАВЕРШЕННЫЕ ТЕСТОВЫЕ ЗАДАНИЯ
 </md-list-item>
-
 <md-list-item ng-repeat = "x in testCtrl.my_javascript_projects">
     <md-button href={{x.ref}}>{{x.name}}<font color = "#FFB4F0">/javascript</font></md-button>
 </md-list-item>
-
 <md-list-item ng-repeat = "x in testCtrl.my_java_projects">
     <md-button href={{x.ref}}>{{x.name}}<font color = "yellow">/java</font></md-button>
 </md-list-item>
@@ -83,6 +81,6 @@
 </md-content>
 
 </div>
-	
+
 </body>
 </html>
