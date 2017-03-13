@@ -1,0 +1,97 @@
+
+ <HTML>
+ <HEAD>
+ <TITLE>Статистика</TITLE>
+
+ </HEAD>
+ <BODY>
+<h1>Статистика</h1>
+<h3>Исходное задание (<a href="http://acmp.ru/index.asp?main=task&id_task=5">оригинальный источник</a>):</h3>
+<p>Вася не любит английский язык, но каждый раз старается получить хотя бы четверку
+ за четверть, чтобы оставаться ударником. В текущей четверти Вася заметил следующую
+ закономерность: по нечетным дням месяца он получал тройки, а по четным – четверки.
+ Так же он помнит, в какие дни он получал эти оценки. Поэтому он выписал на бумажке
+ все эти дни для того, чтобы оценить, сколько у него троек и сколько четверок. 
+ Помогите Васе это сделать, расположив четные и нечетные числа в разных строчках. 
+ Вася может рассчитывать на оценку 4, если четверок не меньше, чем троек.</p>
+<a download="arifmetika.zip" href="arifmetika.zip">Скачать исходный проект Eclipse</a>   
+<h3>Содержимое для Public static void main class:</h3>
+<select size = 100 style = "left:10%; position:relative; width:70%; height:50%">
+		<option value="1">	package arifmetika;
+		<option value="2">import java.util.Scanner;
+	    <option value="3">public class MainClass {
+		<option value="4">	public static void main(String[] args) {
+		<option value="5">		Scanner sc = new Scanner(System.in);
+		<option value="6">		int size; 
+		<option value="7">		int[] arr; 
+		<option value="8">		int min = 0;
+	    <option value="9">		int max = 0;
+		<option value="10">		int posMin = 0;
+		<option value="11">		int posMax = 0;
+		<option value="12">		int sym = 0;
+		<option value="13">		boolean counter = false;
+		<option value="14">		int mnoz = 0;
+	    <option value="15">		System.out.println("Введите размер массива");
+		<option value="16">		size = sc.nextInt();
+		<option value="17">		arr = new int[size];
+		<option value="18">		for (int i = 0; i<size; i++)
+		<option value="19">		{
+		<option value="20">			System.out.println("Введите элемент массива № " + (i+1));
+	    <option value="21">			arr[i] = sc.nextInt();
+		<option value="22">			if (arr[i]>0)
+		<option value="23">			{
+		<option value="24">				sym += arr[i];
+		<option value="25">			}
+		<option value="26">			if (i == 0)
+	    <option value="27">			{
+		<option value="28">				min = arr[i];
+		<option value="29">				max = arr[i];
+		<option value="30">				posMin = 0;
+		<option value="31">			} else
+		<option value="32">			{
+	    <option value="33">				if (arr[i] > max)
+		<option value="34">				{
+		<option value="35">					max = arr[i];
+		<option value="36">					posMax = i;
+		<option value="37">				}
+		<option value="38">				if (arr[i] < min)
+	    <option value="39">				{
+		<option value="40">					min = arr[i];
+		<option value="41">					posMin = i;
+		<option value="42">				}
+	    <option value="43">			}
+		<option value="44">		}
+		<option value="45">		if (posMin < posMax)
+		<option value="46">		{
+		<option value="47">			for (int i = posMin + 1; i < posMax; i++)
+		<option value="48">			{
+	    <option value="49">				if (counter)
+		<option value="50">				{
+		<option value="51">					mnoz = mnoz*arr[i];
+		<option value="52">				} else
+	    <option value="53">				{
+		<option value="54">					mnoz = arr[i];
+		<option value="55">					counter = true;
+		<option value="56">				}
+		<option value="57">			}
+		<option value="58">		} else
+	    <option value="59">		{
+		<option value="60">				for (int i = posMax + 1; i < posMin; i++)
+		<option value="71">			{
+		<option value="72">				if (counter)
+	    <option value="73">				{
+		<option value="74">					mnoz = mnoz*arr[i];
+		<option value="75">				} else
+		<option value="76">				{
+		<option value="77">					mnoz = arr[i];
+		<option value="78">					counter = true;
+	    <option value="79">				}
+		<option value="80">				}
+		<option value="81">		}
+		<option value="82">			System.out.println("" + sym + " " + mnoz);
+	    <option value="83">			}
+		<option value="84">		}
+</select>
+
+ </BODY>
+ </HTML>

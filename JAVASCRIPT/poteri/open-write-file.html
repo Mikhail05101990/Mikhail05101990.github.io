@@ -1,0 +1,100 @@
+﻿ <HTML>
+ <HEAD>
+ <TITLE>Вычисление потерь на складе</TITLE>
+ <script language="JavaScript">
+ <!-- //
+ var a;
+ 
+ function poteri (obj )
+ {
+ var nalBolt = Number(obj.num1.value),
+	boltProc = Number(obj.num2.value)/100,
+	costBolt = Number(obj.num3.value),
+	nalGaik = Number(obj.num4.value),
+	gaikProc = Number(obj.num5.value)/100,
+	costGaik = Number(obj.num6.value),
+	potBolt1 = nalBolt*boltProc, potGaik1 = nalGaik*gaikProc;
+	if(nalBolt-potBolt1>nalGaik-potGaik1)
+	{
+		obj.res.value=potBolt1*costBolt + potGaik1*costGaik + (nalBolt-potBolt1 - nalGaik + potGaik1)*costBolt;	
+	}	else
+	{
+		obj.res.value=potBolt1*costBolt + potGaik1*costGaik + (nalGaik-potGaik1 - nalBolt + potBolt1)*costGaik;	
+	}
+	
+  var type = 'data:application/octet-stream;base64, ';
+  var text = obj.res.value;
+  var base = btoa(text);
+  var res = type + base;
+  document.getElementById('test').href = res;
+ }
+  
+
+ function OnLoad (obj)
+ {
+    inputFile.onchange = function () {
+  var file = inputFile.files[0];
+  var reader = new FileReader();
+
+reader.onloadend = function () {
+
+var masString = reader.result.split('\n');
+var str = masString[0] + ' ' + masString[1], mas = [], j = 0;
+
+for (i = 0; i < str.length; i++)
+{
+	
+if (str[i] == " ")
+{
+	j++; continue;
+}
+else
+{
+mas[j] ? mas[j] += str[i] : mas[j] = str[i];
+}
+
+}
+
+	obj.num1.value = mas[0];
+	obj.num2.value = mas[1];	
+	obj.num3.value = mas[2];	
+	obj.num4.value = mas[3];	
+	obj.num5.value = mas[4];
+	obj.num6.value = mas[5];
+  };
+
+  reader.readAsText(file);
+}; 
+
+ }
+  
+ //-->
+
+</script>
+ 
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+ </HEAD>
+ <BODY>
+ <h2>Величина потерь на складе</h2>
+Загрузить исходные данные из файла <input id="inputFile" onclick="OnLoad(form1)" type="file"/>
+<a download="INPUT.txt" href="INPUT.txt">Скачать пример файла входных данных</a>   
+<a download="TestJava.doc" href="TestJava.doc">Скачать задание</a>
+ <FORM name="form1">
+ <h3>Исходные данные</h3>
+<p><b>Для болтов</b></p>
+Наличие болтов: <input type="text" size=8 name="num1"><hr>
+Потеря болтов, %: <input type="text" size=8 name="num2"><hr>
+Стоимость 1 болта: <input type="text" size=8 name="num3"><hr>
+<p><b>Для гаек</b></p>
+Наличие гаек: <input type="text" size=8 name="num4"><hr>
+Потеря гаек, %: <input type="text" size=8 name="num5"><hr>
+Стоимость 1 гайки: <input type="text" size=8 name="num6"><hr>
+Потери составляют:
+ <input type="button" value=Вычислить onClick="poteri(form1);">
+ <input type="text" size=8 name="res"><hr>
+ <input type="reset">
+ </FORM>
+  <a download="OUTPUT.txt" id="test" href="#">Загрузить файл-результат</a>
+ </BODY>
+ </HTML>

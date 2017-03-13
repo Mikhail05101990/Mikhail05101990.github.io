@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='appListToDo'>
+<head>
+
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+  <link rel="stylesheet" href="stylemain.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="listToDoController.js"></script>  
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  
+</head>
+<body>
+
+<div ng-controller="ctrListToDO as testCtrl">
+
+<div class="left-area white">
+
+<md-list>
+
+<md-list-item style = "background: red;">
+ЗАВЕРШЕННЫЕ ТЕСТОВЫЕ ЗАДАНИЯ
+</md-list-item>
+
+<md-list-item ng-repeat = "x in testCtrl.my_javascript_projects">
+    <md-button href={{x.ref}}>{{x.name}}<font color = "#FFB4F0">/javascript</font></md-button>
+</md-list-item>
+
+<md-list-item ng-repeat = "x in testCtrl.my_java_projects">
+    <md-button href={{x.ref}}>{{x.name}}<font color = "yellow">/java</font></md-button>
+</md-list-item>
+
+</md-list>   
+
+</div>
+
+<md-content flex layout-padding class = "right-area">
+    
+<div class = "avatar">
+<img  src = "photo.jpg" class = "image-avatar"> 
+<h2 class = "text1">
+Павлович Михаил Сергеевич
+<p><font size = "5">e-mail: misha05101990@gmail.com</font></p>
+<p><font size = "5">skype: misha05101990</font></p>
+</h3>
+</img>	
+</div>
+
+<div class = "doc">
+<h3 align = "center">Программное создание документов</h3>
+<p align="justify">Нам часто приходится работать с документами MS office 
+(word, excel, access и др.), заполнять различные бланки, отчеты, 
+договора, распоряжения и многое другое. Эти документы приходится
+ заполнять, создавать новые регулярно, с различной периодичностью,
+но не реже чем один раз в месяц. Каждый из этих документов 
+отличается от предыдущего такого же лишь типовыми данными (ФИО получателя,
+счет, сумма, стоимость заказа и т.д.), но многие и не догадываются,
+ что любой документ может сформировать одна небольшая программа за считанные
+ секунды. Возможно как создание на основе шаблона, хранящегося
+ в определенном месте на диске компьютера, так и независимое 
+ формирование документа на основе данных, которые указываются на 
+ единствееной форме, собраны в одном месте и могут быть расположены
+ как в порядке упоминания, так и в любой удобной очередности.</p>
+<h3>Посмотреть видео о программном создании документов:</h3>
+ </div>
+
+<div class="embed-responsive embed-responsive-16by9 text-justify">
+ <iframe class="embed-responsive-item-left"  src="https://www.youtube.com/embed/tJGsOhfO4cc" frameborder="0" allowfullscreen></iframe>
+  <iframe class="embed-responsive-item-right"  src="https://www.youtube.com/embed/guG5mx0Nxeo" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<a download="Резюме.doc" href="Резюме.doc" class = "oval">Мое резюме</a>
+
+</md-content>
+
+</div>
+	
+</body>
+</html>
