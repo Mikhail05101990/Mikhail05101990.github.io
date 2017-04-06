@@ -36,6 +36,12 @@
 <md-list-item ng-repeat = "x in testCtrl.my_java_projects">
     <md-button href={{x.ref}}>{{x.name}}<font color = "yellow">/java</font></md-button>
 </md-list-item>
+<md-list-item style = "background: red;">
+МОИ ПРОЕКТЫ
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.my_angular_projects">
+    <md-button href={{x.ref}}>{{x.name}}<font color = "#B5C294">/angular</font></md-button>
+</md-list-item>
 
 </md-list>   
 

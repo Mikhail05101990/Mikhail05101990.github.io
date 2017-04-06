@@ -1,0 +1,296 @@
+@charset "UTF-8";
+/* цвет */
+/* цвет */
+/* цвет */
+/* отступ */
+/* размер текста */
+.project-menu-show {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  width: 14%;
+  background: #000000;
+  opacity: 1; }
+
+.project-menu-hide {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  width: 14%;
+  background: #000000;
+  opacity: 0; }
+
+.edit-menu-show {
+  position: absolute;
+  top: 20%;
+  right: 30%;
+  left: 30%;
+  height: 20%;
+  background: #000000;
+  opacity: 1; }
+
+.edit-menu-hide {
+  position: absolute;
+  top: 20%;
+  right: 30%;
+  left: 30%;
+  height: 20%;
+  background: #000000;
+  opacity: 0; }
+
+.otctyp {
+  text-indent: 7%;
+  padding-right: 5%;
+  width: 98%; }
+
+.task-panel-cvernyt {
+  position: absolute;
+  width: 50%;
+  height: 0px;
+  overflow: hidden;
+  opacity: 0;
+  right: 2%;
+  bottom: 2%;
+  background: #000000;
+  vertical-align: top;
+  text-align: center; }
+
+.task-panel-razvernyt {
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  overflow: hidden;
+  opacity: 1;
+  right: 2%;
+  bottom: 2%;
+  background: #000000;
+  vertical-align: top;
+  text-align: center; }
+
+.project-panel-razvernyt {
+  position: absolute;
+  top: 20%;
+  left: 0%;
+  height: 25%;
+  width: 100%;
+  background: #AB4854;
+  overflow: hidden; }
+
+.project-panel-cvernyt {
+  position: absolute;
+  top: 20%;
+  left: 0%;
+  height: 0px;
+  width: 100%;
+  background: #AB4854;
+  overflow: hidden; }
+
+.panel-project {
+  position: absolute;
+  color: #5FFAFF;
+  top: 15%;
+  height: 5%;
+  left: 0%;
+  width: 100%; }
+
+.list-projects {
+  position: relative;
+  background: #000000;
+  top: 20%;
+  left: 0%;
+  width: 100%;
+  height: 80%; }
+
+md-list-item {
+  padding: 0% 0% 0% 12%; }
+
+md-list-item md-button {
+  padding: 0% 0% 0% 0%; }
+
+.date {
+  position: absolute;
+  left: 2.5%;
+  top: 15%; }
+
+.buttons-project {
+  position: absolute;
+  top: 65%;
+  width: 100%; }
+
+.buttons-task {
+  position: absolute;
+  bottom: 2%;
+  width: 100%;
+  text-align: left; }
+
+.text3 {
+  position: absolute;
+  bottom: 30%;
+  left: 2.5%;
+  width: 95%;
+  height: 40%; }
+
+.header1 {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  text-align: center;
+  font-size: 25px; }
+
+.list-tasks {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 5%;
+  bottom: 10%;
+  width: 80%;
+  height: 75%; }
+
+.text1 {
+  position: absolute;
+  left: 50%;
+  right: 10%;
+  top: 15%; }
+
+.text2 {
+  position: absolute;
+  left: 17%;
+  top: 15%; }
+
+.image-avatar {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  top: 10%;
+  left: 17%; }
+
+.button-task-show {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  opacity: 1; }
+
+.button-task-hide {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  opacity: 0; }
+
+.button-log-out {
+  position: absolute;
+  left: 5%;
+  top: 90%; }
+
+.button-edit {
+  position: absolute;
+  right: -3%;
+  top: -5%; }
+
+.button-search {
+  position: absolute;
+  left: 0%;
+  top: 0%; }
+
+.button-add-project {
+  position: absolute;
+  bottom: -60%;
+  right: -270%; }
+
+.avatar {
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  top: 0%;
+  width: 100%;
+  height: 10%; }
+
+.white {
+  color: #FFF4F0; }
+
+.searchPanel {
+  position: absolute;
+  top: -1%;
+  left: -1%;
+  width: 95.5%;
+  height: 10%; }
+
+.left-area {
+  position: absolute;
+  top: 0%;
+  width: 30%;
+  height: 100%;
+  background: #000000; }
+
+.right-area {
+  position: absolute;
+  top: 0%;
+  left: 30%;
+  width: 70%;
+  height: 100%;
+  background: #FFF4F0; }
+
+.day-tasks {
+  position: absolute;
+  width: 90%; }
+
+.task-show {
+  position: relative;
+  opacity: 1; }
+
+.task-hide {
+  position: relative;
+  opacity: 0; }
+
+.itemPrSelect {
+  background: #AB4854; }
+
+.animationNormal {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: h0 0.5s linear all;
+  -ms-transition: 0.5s linear all;
+  transition: 0.3s linear all; }
+
+.animation.fade-show {
+  opacity: 0; }
+
+.animation.fade-hide {
+  opacity: 1; }
+
+.height0 {
+  height: 0%; }
+
+.width0 {
+  width: 0%; }
+
+.height100 {
+  height: 100%; }
+
+.width100 {
+  width: 100%; }
+
+.width95 {
+  width: 95%; }
+
+.width90 {
+  width: 90%; }
+
+.width85 {
+  width: 85%; }
+
+.width80 {
+  width: 80%; }
+
+.width75 {
+  width: 75%; }
+
+.width70 {
+  width: 70%; }
+
+.text-left {
+  text-align: left; }
+
+.text-center {
+  text-align: center; }
+
+/*# sourceMappingURL=styles.css.map */

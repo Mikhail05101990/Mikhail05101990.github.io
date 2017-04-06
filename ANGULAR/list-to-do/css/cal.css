@@ -1,0 +1,363 @@
+/*
+.......................................................
+.                Выбор даты и времени                 .
+.                версия от 06.11.2014                 .
+.                                                     .
+.                  (C) By Protocoder                  .
+.                     protocoder.ru                   .
+.                                                     .
+. распространяется по лицензии Creative Commons BY-NC .
+.   http://creativecommons.org/licenses/by-nc/3.0/    .
+.......................................................
+*/
+
+/* F*****g IE */
+* html .cal .wp {
+	display: inline !important;
+}
+
+.cal {
+	font-family: tahoma;
+	font-size: 0.8em;
+	color: #000000;
+
+	border-radius: 5px;
+
+	background-color: #FAFAFA;
+	border: 1px solid #C0C0C0;
+
+	-webkit-box-shadow: 0 0 2px 1px #C0C0C0;
+	box-shadow: 0 0 2px 1px #C0C0C0;
+}
+
+.cal .wp {
+	position: relative;
+	display: inline-block;
+	padding: 0.5em;
+}
+
+.cal .dayHdrRow, .cal .dayRow {
+}
+
+.cal .yLayer {
+	padding: 2px;
+
+	background-color: #FAFAFA;
+	border: 1px solid #C0C0C0;
+	border-radius: 0.8em;
+
+	-webkit-box-shadow: 0 0 2px 1px #C0C0C0;
+	box-shadow: 0 0 2px 1px #C0C0C0;
+}
+
+.cal .yLayer .yTd {
+	padding: 0 5px 0 5px;
+	color: #000000;
+	text-align: center;
+	cursor: pointer;
+}
+
+.cal .yLayer .yTdC {
+	font-weight: bold;
+}
+
+.cal .yLayer .yTdS {
+	border-radius: 0.8em;
+
+	color: #FFFFFF;
+
+	background: #B4764D; /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(237,181,106,1) 0%, rgba(180,118,77,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,181,106,1)), color-stop(100%,rgba(180,118,77,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edb56a', endColorstr='#b4764d',GradientType=0 ); /* IE6-9 */
+}
+
+.cal .mLayer {
+	padding: 2px;
+
+	background-color: #FAFAFA;
+	border: 1px solid #C0C0C0;
+	border-radius: 0.8em;
+
+	-webkit-box-shadow: 0 0 2px 1px #C0C0C0;
+	box-shadow: 0 0 2px 1px #C0C0C0;
+}
+
+.cal .mLayer .mTd {
+	padding: 0 5px 0 5px;
+	color: #812F00;
+	text-align: left;
+	cursor: pointer;
+}
+
+.cal .mLayer .mTdC {
+	font-weight: bold;
+}
+
+.cal .mLayer .mTd span {
+	color: #000000;
+}
+
+.cal .mLayer .mTdC span {
+	font-weight: bold;
+}
+
+.cal .mLayer .mTdS {
+	border-radius: 0.8em;
+
+	color: #FFFFFF;
+
+	background: #B4764D; /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(237,181,106,1) 0%, rgba(180,118,77,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,181,106,1)), color-stop(100%,rgba(180,118,77,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edb56a', endColorstr='#b4764d',GradientType=0 ); /* IE6-9 */
+}
+
+.cal .mLayer .mTdS span {
+	color: #FFFFFF !important;
+}
+
+.cal .control .cTd {
+	background-color: #F8F4F4;
+	padding-bottom: 0.5em;
+}
+
+.cal .control .cSubT {
+	width: 100%;
+	height: 1.1em;
+}
+
+.cal .control .cSubTr {
+}
+
+.cal .lr {
+	font-size: 12px!important;
+	font-family: Arial;
+	text-align: center;
+	display: inline-block;
+	width: 1.6em;
+	height: 1.6em;
+	overflow: hidden;
+	padding: 0;
+
+	line-height: 1.6em;
+	vertical-align: middle;
+	cursor: pointer;
+	color: #522A29;
+/*	border: solid 1px #997B7B; */
+	border-radius: 50%;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	background: #B4764D; /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(237,181,106,1) 0%, rgba(180,118,77,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,181,106,1)), color-stop(100%,rgba(180,118,77,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edb56a', endColorstr='#b4764d',GradientType=0 ); /* IE6-9 */
+}
+
+.cal .lr:hover {
+	background-color: #EDB56A;
+	color: #FFFFFF;
+}
+
+.cal .lr:active {
+	background: rgb(180,118,77); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(180,118,77,1) 0%, rgba(237,181,106,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(180,118,77,1)), color-stop(100%,rgba(237,181,106,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(180,118,77,1) 0%,rgba(237,181,106,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(180,118,77,1) 0%,rgba(237,181,106,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(180,118,77,1) 0%,rgba(237,181,106,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(180,118,77,1) 0%,rgba(237,181,106,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4764d', endColorstr='#edb56a',GradientType=0 ); /* IE6-9 */
+}
+
+.cal .dec {
+	text-indent: -0.1em;
+}
+
+.cal .inc {
+	text-indent: 0.1em;
+}
+
+.cal .control .year {
+	width: 3.8em;
+	cursor: pointer;
+}
+
+.cal .control .yearC {
+	font-weight: bold;
+}
+
+.cal .control .yearS {
+	color: #FFFFFF;
+	border-radius: 0.8em;
+
+	background: #B4764D; /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(237,181,106,1) 0%, rgba(180,118,77,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,181,106,1)), color-stop(100%,rgba(180,118,77,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edb56a', endColorstr='#b4764d',GradientType=0 ); /* IE6-9 */
+}
+
+.cal .control .month {
+	cursor: pointer;
+	width: 6em;
+}
+
+.cal .control .monthC {
+	font-weight: bold;
+}
+
+.cal .control .monthS {
+	color: #FFFFFF;
+	border-radius: 0.8em;
+
+	background: #B4764D; /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(237,181,106,1) 0%, rgba(180,118,77,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,181,106,1)), color-stop(100%,rgba(180,118,77,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edb56a', endColorstr='#b4764d',GradientType=0 ); /* IE6-9 */
+}
+
+.cal .dayHdrRow {
+}
+
+.cal .dayHdrRow .dayHdr {
+	padding: 0 0.3em;
+	color: #000000;
+	font-weight: bold;
+}
+
+.cal .dayHdrRow .holiDayHdr {
+	color: #8E5535;
+}
+
+.cal .wp table .dvdr {
+	border: solid #D1D1D1;
+	border-width: 1px 0 0 0;
+	font-size: 0.3em;
+}
+
+.cal .dayRow {
+}
+
+.cal .dayRow .day {
+	width: 2.5em;
+	height: 1em;
+	text-align: center;
+	cursor: pointer;
+	padding: 1px;
+}
+
+.cal .dayRow .workDay {
+	color: #000000;
+}
+
+.cal .dayRow .holiDay {
+	color: #8E5535;
+}
+
+.cal .dayRow .selDay {
+/*	background-color: #997B7B !important; */
+	color: #000000 !important;
+	border-radius: 0.8em;
+
+	padding: 0;
+	border: solid 1px #8C5A3C;
+}
+
+.cal .dayRow .curDay {
+	font-weight: bold;
+}
+
+.cal .dayRow .marked {
+	color: #000000 !important;
+	border-radius: 0.8em;
+
+	background: #B4764D; /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(237,181,106,1) 0%, rgba(180,118,77,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(237,181,106,1)), color-stop(100%,rgba(180,118,77,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(237,181,106,1) 0%,rgba(180,118,77,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edb56a', endColorstr='#b4764d',GradientType=0 ); /* IE6-9 */
+}
+
+.cal .dayRow .aMonDay {
+	/*color: #AEAEAE;*/
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+
+.cal .time {
+	display: block;
+	text-align: center;
+	margin-top: 0.5em;
+	padding-top: 0.5em;
+	border: dotted #000000;
+	border-width: 1px 0 0 0;
+	color: #746055;
+}
+
+.cal .time .hours,
+.cal .time .mins,
+.cal .time .secs,
+.cal .time .dvdr {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.cal .time .val {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 3em;
+	line-height: 1.1em;
+	font-weight: bold;
+	padding-right: 0.55em;
+}
+
+.cal .time .up {
+	display: inline-block;
+	position: absolute;
+	top: 0.2em;
+	right: 0;
+}
+
+.cal .time .dn {
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.cal .time .dvdr {
+	font-size: 3em;
+	line-height: 1em;
+	font-weight: bold;
+	margin-top: -0.1em;
+}
