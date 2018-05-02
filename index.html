@@ -12,11 +12,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
   <link rel="stylesheet" href="stylemain.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <script src="listToDoController.js"></script>  
-  
+  <script src="listToDoController.js"></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -30,6 +30,9 @@
 <md-list-item style = "background: red;">
 ЗАВЕРШЕННЫЕ ТЕСТОВЫЕ ЗАДАНИЯ
 </md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.my_Csharp_projects">
+    <md-button href={{x.ref}}>{{x.name}}<font color = "#FF1217">/C#(MVVM)</font></md-button>
+</md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.my_javascript_projects">
     <md-button href={{x.ref}}>{{x.name}}<font color = "#FFB4F0">/javascript</font></md-button>
 </md-list-item>
@@ -42,51 +45,12 @@
 <md-list-item ng-repeat = "x in testCtrl.my_angular_projects">
     <md-button href={{x.ref}}>{{x.name}}<font color = "#B5C294">/angular</font></md-button>
 </md-list-item>
-
-</md-list>   
-
+</md-list>
 </div>
-
 <md-content flex layout-padding class = "right-area">
-    
-<div class = "avatar">
-<img  src = "photo.jpg" class = "image-avatar"> 
-<h2 class = "text1">
-Павлович Михаил Сергеевич
-<p><font size = "5">e-mail: misha05101990@gmail.com</font></p>
-<p><font size = "5">skype: misha05101990</font></p>
-</h3>
-</img>	
-</div>
-
-<div class = "doc">
-<h3 align = "center">Программное создание документов</h3>
-<p align="justify">Нам часто приходится работать с документами MS office 
-(word, excel, access и др.), заполнять различные бланки, отчеты, 
-договора, распоряжения и многое другое. Эти документы приходится
- заполнять, создавать новые регулярно, с различной периодичностью,
-но не реже чем один раз в месяц. Каждый из этих документов 
-отличается от предыдущего такого же лишь типовыми данными (ФИО получателя,
-счет, сумма, стоимость заказа и т.д.), но многие и не догадываются,
- что любой документ может сформировать одна небольшая программа за считанные
- секунды. Возможно как создание на основе шаблона, хранящегося
- в определенном месте на диске компьютера, так и независимое 
- формирование документа на основе данных, которые указываются на 
- единствееной форме, собраны в одном месте и могут быть расположены
- как в порядке упоминания, так и в любой удобной очередности.</p>
-<h3>Посмотреть видео о программном создании документов:</h3>
- </div>
-
-<div class="embed-responsive embed-responsive-16by9 text-justify">
- <iframe class="embed-responsive-item-left"  src="https://www.youtube.com/embed/tJGsOhfO4cc" frameborder="0" allowfullscreen></iframe>
-  <iframe class="embed-responsive-item-right"  src="https://www.youtube.com/embed/guG5mx0Nxeo" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<a download="Резюме.doc" href="Резюме.doc" class = "oval">Мое резюме</a>
-
+<div class = "text1"><p>Web site version 1.2 published 02.05.2018</p></div>
+<a download="Резюме.doc" href="https://jobs.tut.by/resume/ae494081ff037c8e580039ed1f5a6d73675674" class = "oval">Мое резюме</a>
 </md-content>
-
 </div>
-
 </body>
 </html>

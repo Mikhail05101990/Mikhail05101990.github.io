@@ -13,9 +13,6 @@
   -ms-transition: 0.5s linear all;
   transition: 0.3s linear all; }
 
-
-
-
 /* line 120, ../sass/style.scss */
 .panel-project {
   position: absolute;
@@ -120,7 +117,7 @@ md-list-item md-button {
 /* line 247, ../sass/style.scss */
 .text1 {
   position: absolute;
-  left: 30%;
+  right: 0%;
   top: 0%; }
 
 /* line 254, ../sass/style.scss */
@@ -175,14 +172,6 @@ md-list-item md-button {
   bottom: -60%;
   right: -270%; }
 
-/* line 316, ../sass/style.scss */
-.avatar {
-  position: absolute;
-  vertical-align: middle;
-  top: 0%;
-  left:0%;
-  }
-
 /* line 326, ../sass/style.scss */
 .white {
   color: #FFF4F0; }
@@ -215,9 +204,9 @@ md-list-item md-button {
 .doc{
 position: relative;
 top:25%;
-}  
-  
-  
+}
+
+
 .embed-responsive{
 	position: relative;
 	top: 25%;
@@ -228,7 +217,7 @@ top:25%;
 	overflow: hidden;
 	width:100%;
 }
- 
+
 .embed-responsive .embed-responsive-item-left{
 	position: absolute;
 	top: 0;
@@ -269,7 +258,7 @@ top:25%;
     0 0 3px rgba(0,0,0,0.24);
   ;
   position: absolute;
-  top:13%;
+  top:5%;
   right:0;
   text-shadow: 0 1px #45880D;
 }
@@ -298,7 +287,7 @@ top:25%;
     inset -1px 0 3px #B2DC2D,
     inset 0 -2px 2px #89D301,
     0 0 3px rgba(0,0,0,0.24);
-  ; 
+  ;
 }
 .oval:active {
   background: linear-gradient(#83BB37, #599C02);
@@ -307,4 +296,3 @@ top:25%;
   ;
   padding: 1px 0 0 1px;
 }
-

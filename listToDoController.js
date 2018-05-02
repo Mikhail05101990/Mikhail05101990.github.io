@@ -2,8 +2,14 @@
 
 var app = angular.module('appListToDo', ['ngMaterial']);
 
-app.controller('ctrListToDO', function($scope) 
+app.controller('ctrListToDO', function($scope)
 {
+	this.my_Csharp_projects = [
+	{
+	name: 'Student list',
+	ref: "Csharp\\Students\\index.html"
+	}]
+
 	this.my_java_projects = [
 	{
 	name: 'Статистика',
@@ -15,9 +21,9 @@ app.controller('ctrListToDO', function($scope)
 	},
 	{
 	name: 'Шахматы',
-	ref: "JAVA\\Шахматы\\Шахматы.html"		
+	ref: "JAVA\\Шахматы\\Шахматы.html"
 	}]
-	
+
 	this.my_javascript_projects = [
 	{
 	name: 'Расчет потерь',
@@ -25,7 +31,7 @@ app.controller('ctrListToDO', function($scope)
 	},
 	{
 	name: 'Случайные строки',
-	ref: "JAVASCRIPT\\random_string\\random-string.html"		
+	ref: "JAVASCRIPT\\random_string\\random-string.html"
 	}]
 
 		this.my_angular_projects = [
@@ -33,27 +39,18 @@ app.controller('ctrListToDO', function($scope)
 	name: 'Список дел',
 	ref: "ANGULAR\\list-to-do\\index.html"
 	}]
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 });
-
-
-
-
-
-
-
-
-
