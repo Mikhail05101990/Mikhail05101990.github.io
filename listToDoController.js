@@ -6,8 +6,16 @@ app.controller('ctrListToDO', function($scope)
 {
 	this.my_Csharp_projects = [
 	{
+	name: 'Bus ticket shop',
+	ref: "Csharp\\BusTicketShop\\index.html"
+	},
+	{
 	name: 'Student list',
 	ref: "Csharp\\Students\\index.html"
+	},
+	{
+	name: 'Grandfather',
+	ref: "Csharp\\Grandfather\\index.html"
 	}]
 
 	this.my_java_projects = [

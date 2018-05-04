@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='appListToDo'>
+<head>
+
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="styles.css"/>
+
+</head>
+<body>
+<center>
+  <h1>GRANDFATHER</h1>
+</center>
+<p>You can download the project by reference
+<a download="Grandfather.zip" href="Grandfather.zip"> download the project in zip</a> Download the specification:
+<a download="TestTask.txt" href="TestTask.txt">Test task</a>
+</p>
+<p>Main method uses three declared static methods. They are GetNumber, GetArray, CalculateWeight.</p>
+<div class = "code">
+<pre>
+  static void Main(string[] args)
+  {
+      int shugar = 0;
+      int[] arr;
+      Console.Write("Hello, this app can compute weight of a couple bags of shugar for you that necessary to cook moonshine:)\n");
+      Console.Write("First you need to input weight of shugar that you need, please, start to do it right now\n");
+      shugar = GetNumber(-1, "");
+      Console.Write("I need to know masses of all bags that are in the shop too.\nEntering in succession numbers separated by spaces.\n");
+      arr = GetArray();
+      CalculateWeight(shugar, arr);
+      Console.Write("\nPress any character to quit");
+      Console.ReadKey();
+  }
+</pre>
+</div>
+<p>GetNumber method gets a necessary weight of shugar.</p>
+<div class = "code">
+<pre>
+  static public int GetNumber(int number, string s)
+  {
+      string input = null;
+      bool bl;
+      int value;
+      metka:
+          if (number == -1)
+          {
+              input = Console.ReadLine();
+          }
+          else
+          {
+              input = s;
+          }
+          bl = Int32.TryParse(input, out value);
+          if (number == -1)
+          {
+              if (bl == false || value <= 0)
+              {
+                  Console.Write("Input is not correct, try again, please.\n");
+                  goto metka;
+              }
+          }
+      return value;
+  }
+</pre>
+</div>
+<p>GetArray gets an array of shugar weights that are in the store.</p>
+<div class = "code">
+<pre>
+  static public int[] GetArray()
+  {
+      string s =", ";
+      mark:
+      var input = Console.ReadLine();
+      int[] n = input.Split(' ', ',', '.').Select(e => GetNumber(1, e)).ToArray();
+      n = n.Where(x => x != 0).ToArray();
+      for (int i = 0; i < n.Length - 1; i++)
+      {
+          for (int j = 0; j < n.Length - 1; j++)
+          {
+              if (n[j] > n[j + 1])
+              {
+                  int tmp = n[j];
+                  n[j] = n[j + 1];
+                  n[j + 1] = tmp;
+              }
+          }
+      }
+      List&lt;int> list = n.ToList(); // Преобразование в список
+      for (int k = 1; k < list.Count; k++)
+      {
+          if (list[k] == list[k - 1])
+          {
+              list.RemoveAt(k);
+              k--;
+          }
+      }
+      n = list.ToArray();
+      Console.Write("There are bags in the shop with a weight: ");
+      for (int t = 0; t&lt;n.Length; t++)
+      {
+          if (t>=n.Length -1 | n.Length == 1)
+          {
+              s = "";
+          }
+          Console.Write(n[t]+s);
+      }
+      if (n.Length == 0)
+      {
+          Console.Write("\nInput is not correct, try again, please.\n");
+          goto mark;
+      }
+      Console.Write("\nMake sure the entered data is correct and enter 'yes', else enter 'no'.\n");
+      mark2:
+      input = Console.ReadLine();
+      if (input != "yes" & input != "no")//требование корректного ввода
+      {
+          Console.Write("Input is not correct, try to enter 'yes' or 'no' again.\n");
+          goto mark2;
+      } else
+      {
+          if (input == "no")
+          {
+              Console.Write("Enter new values of bags weights.\n");
+              goto mark;
+          }
+      }
+      return n;
+  }
+</pre>
+</div>
+<p>CalculateWeight method returns all coupls of weights that you need to get a necessary weight of shugar.</p>
+<div class = "code">
+<pre>
+  public static void CalculateWeight(int number, int[] array)
+  {
+      List&lt;string> options = new List&lt;string>();
+      string result;//строковая переменная для годного результата
+      int min = 0; //минимум при отсутствии совпадений
+      bool bl = true;
+      for (int i = 0; i < array.Length - 1; i++) //перебор вариантов из массива весов
+      {
+          for (int j = 0; j < array.Length - 1; j++)
+          {
+              int sum = array[i] + array[j];
+              if (sum == number)
+              {
+                  if (array[i] < array[j]) //сортировка по возрастанию
+                  {
+                      result = array[i].ToString() + " " + array[j].ToString() + "; ";
+                  }
+                  else //сортировка по возрастанию
+                  {
+                      result = array[j].ToString() + " " + array[i].ToString() + "; ";
+                  }
+                  for (int d = 0; d< options.Count; d++) //проверяем нет ли уже этого значения в списке
+                  {
+                      if (options[d] == result)
+                          bl = false;
+                  }
+                  if (bl == true)
+                      options.Add(result);
+              } else //не сопвпала сумма
+              {
+                  if (sum > number)
+                  {
+                      if (bl == false)
+                      {
+                          if (min == 0)
+                          {
+                              min = sum;
+                          } else
+                          {
+                              if (sum < min)
+                                  min = sum;
+                          }
+                      }
+                  }
+              }
+          }
+      }
+      if (options.Count != 0)
+      {
+          Console.Write("You should take bags with a weight: ");
+          for (int t = 0; t < options.Count; t++)
+          {
+              Console.Write(options[t]);
+          }
+      } else
+      {
+          Console.Write("There is not any way to take a necessary weight of shugar.");
+      }
+
+  }
+</pre>
+</div>
+
+</body>
+</html>
