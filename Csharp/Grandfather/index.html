@@ -15,181 +15,171 @@
 <a download="Grandfather.zip" href="Grandfather.zip"> download the project in zip</a> Download the specification:
 <a download="TestTask.txt" href="TestTask.txt">Test task</a>
 </p>
-<p>Main method uses three declared static methods. They are GetNumber, GetArray, CalculateWeight.</p>
+<p>Main method uses methods of a class CalculateResult to get data from a user and
+to calculate an answer.</p>
 <div class = "code">
 <pre>
-  static void Main(string[] args)
+  class Program
   {
-      int shugar = 0;
-      int[] arr;
-      Console.Write("Hello, this app can compute weight of a couple bags of shugar for you that necessary to cook moonshine:)\n");
-      Console.Write("First you need to input weight of shugar that you need, please, start to do it right now\n");
-      shugar = GetNumber(-1, "");
-      Console.Write("I need to know masses of all bags that are in the shop too.\nEntering in succession numbers separated by spaces.\n");
-      arr = GetArray();
-      CalculateWeight(shugar, arr);
-      Console.Write("\nPress any character to quit");
-      Console.ReadKey();
-  }
-</pre>
-</div>
-<p>GetNumber method gets a necessary weight of shugar.</p>
-<div class = "code">
-<pre>
-  static public int GetNumber(int number, string s)
-  {
-      string input = null;
-      bool bl;
-      int value;
-      metka:
-          if (number == -1)
+      static void Main(string[] args)
+      {
+          CalculateResult cl = new CalculateResult();
+          Console.Write("Hello, Enter a weight of shugar that you need in order to brew moonshine\n");
+          bool bl = false;
+          string input = "";
+          string s = ", ";
+          int[] n;
+          do
           {
-              input = Console.ReadLine();
+              input = cl.GetInput();
+              bl = cl.IsNumber(input);
+              if (!bl)
+              {
+                  Console.Write("Iput is not correct, enter again, please\n");
+              }
+
+          } while (!bl);
+          int Number = cl.GetNumber(input);
+          Console.Write("Enter masses of bags with shugar that are in the shop.\n");
+          do
+          {
+              input = cl.GetInput();
+              n = cl.GetArray(input);
+              if (n.Length == 0)
+              {
+                  Console.Write("Iput is not correct, enter again, please\n");
+              }
+          } while (n.Length == 0);
+          input = cl.Checking(Number, n);
+          Console.Write("Entered number is " + Number.ToString() + "\n");
+          Console.Write("Entered array is ");
+          for (int i = 0; i < n.Length; i++)
+          {
+              if (i == n.Length - 1)
+              {
+                  s = "\n";
+              }
+              Console.Write(n[i] + s);
+          }
+          if (input != "")
+          {
+              Console.Write("You should take bags with a weight: " + input);
           }
           else
           {
-              input = s;
-          }
-          bl = Int32.TryParse(input, out value);
-          if (number == -1)
-          {
-              if (bl == false || value <= 0)
-              {
-                  Console.Write("Input is not correct, try again, please.\n");
-                  goto metka;
-              }
-          }
-      return value;
+              Console.Write("There is not any way to take a necessary weight of shugar.\n");
+        }
+          Console.Write("Press any character to quit");
+          Console.ReadKey();
+      }
   }
 </pre>
 </div>
-<p>GetArray gets an array of shugar weights that are in the store.</p>
+<p>There is a method GetInput to read a string input, an IsNumber method
+to check if input is correct, a GetNumber and a GetArray methods to convert
+an input to integer type data in the Class CalculateResult, And the main and the most complicated method Checking
+to calculate possible weights. That method obtains two variables. They are a
+num and an arr. num is a weight of shugar that you need. arr is available
+masses of shugar in the store.</p>
 <div class = "code">
 <pre>
-  static public int[] GetArray()
+  class CalculateResult
   {
-      string s =", ";
-      mark:
-      var input = Console.ReadLine();
-      int[] n = input.Split(' ', ',', '.').Select(e => GetNumber(1, e)).ToArray();
-      n = n.Where(x => x != 0).ToArray();
-      for (int i = 0; i < n.Length - 1; i++)
+      public string GetInput()
       {
-          for (int j = 0; j < n.Length - 1; j++)
+          string input;
+          input = Console.ReadLine();
+          return input;
+      }
+      public bool IsNumber(string str)
+      {
+          int value;
+          bool bl = Int32.TryParse(str, out value);
+          if (!bl || value == 0)
           {
-              if (n[j] > n[j + 1])
+              return false;
+          }
+          else
+          {
+              return bl;
+          }
+      }
+      public int GetNumber(string str)
+      {
+          int Number;
+          bool bl = Int32.TryParse(str, out Number);
+          return Number;
+      }
+      public int[] GetArray(string str)
+      {
+          int[] n = str.Split(' ', ',', '.', ';').Select(e => GetNumber(e)).ToArray();
+          n = n.Where(x => x != 0).ToArray();
+          return n;
+      }
+      public string Checking(int num, int[] arr)
+      {
+          List&lt;string> options = new List&lt;string>();
+          string result = "";//строковая переменная для годного результата
+          int min = 0; //минимум при отсутствии совпадений
+          bool bl = true;
+          for (int i = 0; i < arr.Length - 1; i++) //перебор вариантов из массива весов
+          {
+              for (int j = 0; j < arr.Length - 1; j++)
               {
-                  int tmp = n[j];
-                  n[j] = n[j + 1];
-                  n[j + 1] = tmp;
-              }
-          }
-      }
-      List&lt;int> list = n.ToList(); // Преобразование в список
-      for (int k = 1; k < list.Count; k++)
-      {
-          if (list[k] == list[k - 1])
-          {
-              list.RemoveAt(k);
-              k--;
-          }
-      }
-      n = list.ToArray();
-      Console.Write("There are bags in the shop with a weight: ");
-      for (int t = 0; t&lt;n.Length; t++)
-      {
-          if (t>=n.Length -1 | n.Length == 1)
-          {
-              s = "";
-          }
-          Console.Write(n[t]+s);
-      }
-      if (n.Length == 0)
-      {
-          Console.Write("\nInput is not correct, try again, please.\n");
-          goto mark;
-      }
-      Console.Write("\nMake sure the entered data is correct and enter 'yes', else enter 'no'.\n");
-      mark2:
-      input = Console.ReadLine();
-      if (input != "yes" & input != "no")//требование корректного ввода
-      {
-          Console.Write("Input is not correct, try to enter 'yes' or 'no' again.\n");
-          goto mark2;
-      } else
-      {
-          if (input == "no")
-          {
-              Console.Write("Enter new values of bags weights.\n");
-              goto mark;
-          }
-      }
-      return n;
-  }
-</pre>
-</div>
-<p>CalculateWeight method returns all coupls of weights that you need to get a necessary weight of shugar.</p>
-<div class = "code">
-<pre>
-  public static void CalculateWeight(int number, int[] array)
-  {
-      List&lt;string> options = new List&lt;string>();
-      string result;//строковая переменная для годного результата
-      int min = 0; //минимум при отсутствии совпадений
-      bool bl = true;
-      for (int i = 0; i < array.Length - 1; i++) //перебор вариантов из массива весов
-      {
-          for (int j = 0; j < array.Length - 1; j++)
-          {
-              int sum = array[i] + array[j];
-              if (sum == number)
-              {
-                  if (array[i] < array[j]) //сортировка по возрастанию
+                  int sum = arr[i] + arr[j];
+                  if (sum == num)
                   {
-                      result = array[i].ToString() + " " + array[j].ToString() + "; ";
-                  }
-                  else //сортировка по возрастанию
-                  {
-                      result = array[j].ToString() + " " + array[i].ToString() + "; ";
-                  }
-                  for (int d = 0; d< options.Count; d++) //проверяем нет ли уже этого значения в списке
-                  {
-                      if (options[d] == result)
-                          bl = false;
-                  }
-                  if (bl == true)
-                      options.Add(result);
-              } else //не сопвпала сумма
-              {
-                  if (sum > number)
-                  {
-                      if (bl == false)
+                      if (arr[i] < arr[j]) //сортировка по возрастанию
                       {
-                          if (min == 0)
+                          result = arr[i].ToString() + " " + arr[j].ToString() + "; ";
+                      }
+                      else //сортировка по возрастанию
+                      {
+                          result = arr[j].ToString() + " " + arr[i].ToString() + "; ";
+                      }
+                      for (int d = 0; d < options.Count; d++) //проверяем нет ли уже этого значения в списке
+                      {
+                          if (options[d] == result)
+                              bl = false;
+                      }
+                      if (bl == true)
+                          options.Add(result);
+                  }
+                  else //не сопвпала сумма
+                  {
+                      if (sum > num)
+                      {
+                          if (bl == false)
                           {
-                              min = sum;
-                          } else
-                          {
-                              if (sum < min)
+                              if (min == 0)
+                              {
                                   min = sum;
+                              }
+                              else
+                              {
+                                  if (sum < min)
+                                      min = sum;
+                              }
                           }
                       }
                   }
               }
           }
-      }
-      if (options.Count != 0)
-      {
-          Console.Write("You should take bags with a weight: ");
-          for (int t = 0; t < options.Count; t++)
+          if (options.Count != 0)
           {
-              Console.Write(options[t]);
+              result = "";
+              for (int t = 0; t < options.Count; t++)
+              {
+                  result = result + options[t].ToString();
+              }
+              return result;
           }
-      } else
-      {
-          Console.Write("There is not any way to take a necessary weight of shugar.");
-      }
+          else
+          {
+              return result;
+          }
 
+      }
   }
 </pre>
 </div>

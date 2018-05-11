@@ -14,6 +14,10 @@ app.controller('ctrListToDO', function($scope)
 	ref: "Csharp\\Students\\index.html"
 	},
 	{
+	name: 'Numbers and SQL Server',
+	ref: "Csharp\\TestTasks\\index.html"
+	},
+	{
 	name: 'Grandfather',
 	ref: "Csharp\\Grandfather\\index.html"
 	}]
