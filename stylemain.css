@@ -1,27 +1,5 @@
 @charset "UTF-8";
 
-.otctyp {
-  text-indent: 7%;
-  padding-right: 5%;
-  width: 98%; }
-
-/* line 35, ../sass/style.scss */
-.animationNormal {
-  -webkit-transition: 0.5s linear all;
-  -moz-transition: 0.5s linear all;
-  -o-transition: h0 0.5s linear all;
-  -ms-transition: 0.5s linear all;
-  transition: 0.3s linear all; }
-
-/* line 120, ../sass/style.scss */
-.panel-project {
-  position: absolute;
-  color: #5FFAFF;
-  top: 15%;
-  height: 5%;
-  left: 0%;
-  width: 100%; }
-
 /* line 130, ../sass/style.scss */
 .list-projects {
   position: relative;
@@ -31,6 +9,11 @@
   width: 100%;
   height: 80%; }
 
+md-list{
+  color: white;
+  background: #000000;
+  height:100%;
+}
 /* line 144, ../sass/style.scss */
 md-list-item {
   padding: 0% 0% 0% 3%; }
@@ -39,56 +22,11 @@ md-list-item {
 md-list-item md-button {
   padding: 0% 0% 0% 0%; }
 
-/* line 156, ../sass/style.scss */
-.height0 {
-  height: 0%; }
-
-/* line 161, ../sass/style.scss */
-.height100 {
-  height: 100%; }
-
-/* line 166, ../sass/style.scss */
-.width100 {
-  width: 100%; }
-
-/* line 170, ../sass/style.scss */
-.width95 {
-  width: 95%; }
-
-/* line 174, ../sass/style.scss */
-.width90 {
-  width: 90%; }
-
-/* line 178, ../sass/style.scss */
-.width80 {
-  width: 80%; }
-
-/* line 182, ../sass/style.scss */
-.width70 {
-  width: 70%; }
-
-/* line 186, ../sass/style.scss */
-.text-left {
-  text-align: left; }
-
 /* line 194, ../sass/style.scss */
 .date {
   position: absolute;
   left: 2.5%;
   top: 15%; }
-
-/* line 201, ../sass/style.scss */
-.buttons-project {
-  position: absolute;
-  top: 65%;
-  width: 100%; }
-
-/* line 209, ../sass/style.scss */
-.buttons-task {
-  position: absolute;
-  bottom: 2%;
-  width: 100%;
-  text-align: left; }
 
 /* line 217, ../sass/style.scss */
 .text3 {
@@ -115,89 +53,46 @@ md-list-item md-button {
   bottom: 10%; }
 
 /* line 247, ../sass/style.scss */
-.text1 {
+.version {
   position: absolute;
-  right: 0%;
-  top: 0%; }
+  right: 1%;
+  top: 1%; }
 
 /* line 254, ../sass/style.scss */
-.text2 {
+.resume {
   position: absolute;
-  left: 17%;
-  top: 15%; }
+  font-size: 200%;
+  left: 1%;
+  top: 1%; }
 
 /* line 261, ../sass/style.scss */
-.image-avatar {
-  position:relative;
-  width: 25%;
-  height: 25%;
+.top-line {
+  position:absolute;
+  height: 5%;
   top: 0%;
   left:0%; }
 
-/* line 271, ../sass/style.scss */
-.button-task-show {
-  position: absolute;
-  right: 5%;
-  bottom: 5%;
-  opacity: 1; }
-
-/* line 279, ../sass/style.scss */
-.button-task-hide {
-  position: absolute;
-  right: 5%;
-  bottom: 5%;
-  opacity: 0; }
-
-/* line 288, ../sass/style.scss */
-.button-log-out {
-  position: absolute;
-  left: 5%;
-  top: 90%; }
-
-/* line 295, ../sass/style.scss */
-.button-edit {
-  position: absolute;
-  right: -3%;
-  top: -5%; }
-
-/* line 302, ../sass/style.scss */
-.button-search {
-  position: absolute;
-  left: 0%;
-  top: 0%; }
-
-/* line 309, ../sass/style.scss */
-.button-add-project {
-  position: absolute;
-  bottom: -60%;
-  right: -270%; }
-
-/* line 326, ../sass/style.scss */
-.white {
-  color: #FFF4F0; }
-
-/* line 331, ../sass/style.scss */
-.searchPanel {
-  position: absolute;
-  top: -1%;
-  left: -1%;
-  width: 95.5%;
-  height: 10%; }
+.bottom-line {
+  position:absolute;
+  visibility: hidden;
+  height: 4%;
+  bottom: 0%;
+  left:0%;
+  width: 100%;
+}
 
 /* line 340, ../sass/style.scss */
 .left-area {
   position: absolute;
   top: 0%;
-  width: 30%;
-  height: 100%;
-  background: #000000; }
+  width: 20%; }
 
 /* line 349, ../sass/style.scss */
 .right-area {
   position: absolute;
   top: 0%;
-  left: 30%;
-  width: 70%;
+  left: 20%;
+  width: 80%;
   height: 100%;
   background: #FFF4F0; }
 
@@ -206,93 +101,36 @@ position: relative;
 top:25%;
 }
 
-
-.embed-responsive{
-	position: relative;
-	top: 25%;
-	right:0;
-	display: block;
-	height: 0;
-	padding: 0;
-	overflow: hidden;
-	width:100%;
-}
-
-.embed-responsive .embed-responsive-item-left{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 50%;
-	border: 0;
-}
-
-.embed-responsive .embed-responsive-item-right{
-	position: absolute;
-	top: 0;
-	left: 50%;
-	right:0;
-	width: 50%;
-	border: 0;
-	text-align:right;
-}
-
-.oval {
-  display: inline-block;
-  width: 110px;
-  padding: 1px 0 0 1px;
-  box-sizing: border-box;
-  margin: 10px;
-  text-align: center;
-  color: #FFF;
-  text-decoration: none;
-  background: linear-gradient(#FFE83C, #599C02);
-  background-color: 6FAD1D;
-  border-radius: 30px;
-  border: 1px solid #579A00;
-  font: bold 15px/35px Arial;
-  box-shadow:
-    inset 0 2px 2px #CCE464,
-    inset 1px 0 3px #B2DC2D,
-    inset -1px 0 3px #B2DC2D,
-    inset 0 -2px 2px #89D301,
-    0 0 3px rgba(0,0,0,0.24);
-  ;
+/***************************************************/
+input{
+  text-indent: 1%;
   position: absolute;
-  top:5%;
-  right:0;
-  text-shadow: 0 1px #45880D;
-}
-.oval:before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 100%;
+  background: black;
+  bottom:1%;
+  width:70%;
+  right: 0%;
   height: 100%;
-  padding: 0px;
-  background: #D7D7D7;
-  z-index: -1;
-  border-radius: 25px;
-  box-shadow:
-    inset 0 1px 2px #BBB;
 }
-.oval:hover {
-  background: linear-gradient(#97D444, #65AD07);
-  box-shadow:
-    inset 0 1px 0 #E2F498,
-    inset 0 2px 0 #CEEC87,
-    inset 0 3px 0 #C3E67C,
-    inset 0 5px 0 #BAE475,
-    inset 1px 0 3px #B2DC2D,
-    inset -1px 0 3px #B2DC2D,
-    inset 0 -2px 2px #89D301,
-    0 0 3px rgba(0,0,0,0.24);
-  ;
+
+input[type="text"]
+{
+    font-size:20px;
+    color: white;
 }
-.oval:active {
-  background: linear-gradient(#83BB37, #599C02);
-  box-shadow:
-    inset 0 3px 7px #3C7B00;
-  ;
-  padding: 1px 0 0 1px;
+
+.token{
+  position: absolute;
+  text-indent: 1%;
+  bottom: 1%;
+  top:1%;
+  left: 0%;
+  font-size: 20px;
+}
+
+.consol-shown{
+  visibility: visible;
+}
+
+.consol-hidden{
+  visibility: hidden;
 }

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" ng-app='appListToDo'>
 <head>
-
   <meta charset="UTF-8">
+
   <title></title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
@@ -11,8 +11,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
   <link rel="stylesheet" href="stylemain.css"/>
+  <link rel="stylesheet" href="baseStyle.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <script src="listToDoController.js"></script>
+  <script src="mainController.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
@@ -20,15 +21,10 @@
 
 </head>
 <body>
-
 <div ng-controller="ctrListToDO as testCtrl">
-
-<div class="left-area white">
-
-<md-list>
-
+<md-list class="left-area">
 <md-list-item style = "background: red;">
-ЗАВЕРШЕННЫЕ ТЕСТОВЫЕ ЗАДАНИЯ
+Acomplished tasks  <md-menu>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.my_Csharp_projects">
     <md-button href={{x.ref}}>{{x.name}}<font color = "#FF1217">/C#</font></md-button>
@@ -40,17 +36,19 @@
     <md-button href={{x.ref}}>{{x.name}}<font color = "yellow">/java</font></md-button>
 </md-list-item>
 <md-list-item style = "background: red;">
-МОИ ПРОЕКТЫ
+My projects
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.my_angular_projects">
     <md-button href={{x.ref}}>{{x.name}}<font color = "#B5C294">/angular</font></md-button>
 </md-list-item>
 </md-list>
-</div>
 <md-content flex layout-padding class = "right-area">
-<div class = "text1"><p>Web site version 1.4 published 11.05.2018</p></div>
-<a download="Резюме.doc" href="https://jobs.tut.by/resume/ae494081ff037c8e580039ed1f5a6d73675674" class = "oval">Мое резюме</a>
+<div class = "top-line width100">
+<div class = "version"><p>Web site version 1.4 published 11.05.2018</p></div>
+<div class = "resume"><p><a download="Резюме.doc" href="https://jobs.tut.by/resume/ae494081ff037c8e580039ed1f5a6d73675674">Resume</a></p></div>
+</div>
 </md-content>
+</div>
 </div>
 </body>
 </html>
