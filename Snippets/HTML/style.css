@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+body{
+  background: black;
+}
+
+.code {
+  position: relative;
+  left: 0%;
+  top: 0%;
+  background: black;
+  width: 100%;
+  overflow-y: auto;
+  border: 1px solid #7EC1BC;
+}
+
+.title{
+  position: relative;
+  top: 0%;
+  left: 0%;
+  color: white;
+}
+
+.description{
+  position: relative;
+  top: 0%;
+  left: 0%;
+  color: white;
+}
+
+md-list
+{
+  position: absolute;
+  top:0%;
+  left:0%;
+  width: 100%;
+  color: white;
+  min-height: 100%;
+}

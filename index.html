@@ -41,14 +41,45 @@ My projects
 <md-list-item ng-repeat = "x in testCtrl.my_angular_projects">
     <md-button href={{x.ref}}>{{x.name}}<font color = "#B5C294">/angular</font></md-button>
 </md-list-item>
+<md-list-item style = "background: red;">
+Useful links
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.links_git">
+  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.links_angular">
+  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.links_Csharp">
+  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.links_angular2">
+  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+</md-list-item>
+<md-list-item style = "background: red;">
+Useful snippets
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.snippets_angular">
+    <md-button href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</md-button>
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.snippets_Csharp">
+    <md-button href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</md-button>
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.snippets_html">
+    <md-button href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</md-button>
+</md-list-item>
 </md-list>
 <md-content flex layout-padding class = "right-area">
 <div class = "top-line width100">
-<div class = "version"><p>Web site version 1.4 published 11.05.2018</p></div>
-<div class = "resume"><p><a download="Резюме.doc" href="https://jobs.tut.by/resume/ae494081ff037c8e580039ed1f5a6d73675674">Resume</a></p></div>
+<div class = "version"><p>Web site version 1.4.002 published 13.07.2018</p></div>
+<div class = "resume"><p><md-button href="https://jobs.tut.by/resume/ae494081ff037c8e580039ed1f5a6d73675674">Resume</md-button>
+                        <md-button href="https://www.tut.by/">NEWS (tut.by)</md-button>
+                        <!--<md-button href="https://www.tut.by/">NEWS (tut.by)</md-button>
+                        <md-button href="https://www.tut.by/">NEWS (tut.by)</md-button>
+                        <md-button href="https://www.tut.by/">NEWS (tut.by)</md-button>-->
+                      </p></div>
 </div>
 </md-content>
-</div>
 </div>
 </body>
 </html>

@@ -93,4 +93,54 @@ app.controller('ctrListToDO', function($scope)
 	ref: "ANGULAR\\list-to-do\\index.html"
 	}]
 
+  this.links_git = [
+    {
+      name: 'Links',
+      lang: '/Git',
+      ref: "Links\\Git\\index.html"
+    }]
+
+  this.links_angular = [
+    {
+      name: 'Links',
+      lang: '/Angular',
+      ref: "Links\\Angular\\index.html"
+    }]
+
+  this.links_Csharp = [
+    {
+      name: 'Links',
+      lang: '/C#',
+      ref: "Links\\Csharp\\index.html"
+    }]
+
+  this.links_angular2 = [
+    { name: 'Links',
+      lang: '/Angular 2',
+      ref: "Links\\Angular 2\\index.html"
+    }]
+
+  this.snippets_angular = [
+  {
+      name: 'Snippets',
+      lang: '/Angular',
+      ref: "Snippets\\Angular\\index.html"
+  }]
+
+  this.snippets_Csharp = [
+  {
+      name: 'Snippets',
+      lang: '/C#',
+      ref: "Snippets\\Csharp\\index.html"
+  }]
+
+  this.snippets_html = [
+  {
+      name: 'Snippets',
+      lang: '/HTML',
+      ref: "Snippets\\HTML\\index.html"
+  }]
+
+
+
 });
