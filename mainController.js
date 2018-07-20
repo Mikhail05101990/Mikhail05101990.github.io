@@ -120,6 +120,18 @@ app.controller('ctrListToDO', function($scope)
       ref: "Links\\Angular 2\\index.html"
     }]
 
+  this.links_html = [
+    { name: 'Links',
+      lang: '/HTML',
+      ref: "Links\\HTML\\index.html"
+    }]
+
+  this.links_assembler = [
+    { name: 'Links',
+      lang: '/assembler',
+      ref: "Links\\assembler\\index.html"
+    }]
+
   this.snippets_angular = [
   {
       name: 'Snippets',

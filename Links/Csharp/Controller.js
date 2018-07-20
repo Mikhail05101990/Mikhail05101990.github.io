@@ -18,6 +18,9 @@ app.controller('linker', function($scope)
 {
   description: 'Asp.net video guidance developed by Microsoft',
   ref: "https://app.pluralsight.com/player?author=jon-flanders&clip=0&course=aspnetwebapi&mode=live&name=aspnetwebapi-m1-introduction"
+},{
+  description: 'Security with individual accounts',
+  ref: "https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api"
 }]
 
 
