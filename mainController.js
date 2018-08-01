@@ -45,6 +45,8 @@ app.directive('consolVisibil', ['$document', function($document) {
 
 app.controller('ctrListToDO', function($scope)
 {
+  $scope.weatherLink = "weather\\index.html";
+
 	this.my_Csharp_projects = [
 	{
 	name: 'Bus ticket shop',
