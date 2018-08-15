@@ -95,6 +95,12 @@ app.controller('ctrListToDO', function($scope)
 	ref: "ANGULAR\\list-to-do\\index.html"
 	}]
 
+  this.my_crmSystems = [
+  {
+  name: 'CRM project',
+  ref: "CRMsystems\\salesForce\\index.html"
+  }]
+
   this.links_git = [
     {
       name: 'Links',
