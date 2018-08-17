@@ -97,7 +97,7 @@ app.controller('ctrListToDO', function($scope)
 
   this.my_crmSystems = [
   {
-  name: 'CRM project',
+  name: 'Cloud org',
   ref: "CRMsystems\\salesForce\\index.html"
   }]
 

@@ -8,29 +8,31 @@ app.controller('linker', function($scope)
   $scope.title = 'Test 1, CRM - Sales force'
 
   this.links1 = [{
-    description: 'link 1',
-    ref: "https://trailhead.salesforce.com"
+    description: 'Guided learning parts',
+    ref: "https://trailhead.salesforce.com/trails#role=role-dev"
   },
 {
-  description: 'link2',
+  description: 'Apex workbook - web version',
   ref: "https://resources.docs.salesforce.com/198/latest/en-us/sfdc/pdf/apex_workbook.pdf"
 },
 {
-  description: 'link3',
+  description: 'Visualforce basics',
   ref: "https://trailhead.salesforce.com/modules/visualforce_fundamentals"
 },
 {
-  description: 'link4',
+  description: 'Visualforce developer guide - wev version',
   ref: "https://resources.docs.salesforce.com/sfdc/pdf/salesforce_pages_developers_guide.pdf"
 },
 {
-  description: 'link5',
+  description: 'Huge number of salesforce guides',
   ref: "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"
 }];
 
 this.site = [{
   description: 'Cloud admin cabinet',
-  ref: "https://ap4.lightning.force.com/lightning/setup/SetupOneHome/home"
+  ref: "https://ap4.lightning.force.com/lightning/setup/SetupOneHome/home",
+  login: "spech999@gmail.com",
+  password: "steepsales1"
 }];
 
 
