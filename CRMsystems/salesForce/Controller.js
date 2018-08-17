@@ -20,7 +20,7 @@ app.controller('linker', function($scope)
   ref: "https://trailhead.salesforce.com/modules/visualforce_fundamentals"
 },
 {
-  description: 'Visualforce developer guide - wev version',
+  description: 'Visualforce developer guide - web version',
   ref: "https://resources.docs.salesforce.com/sfdc/pdf/salesforce_pages_developers_guide.pdf"
 },
 {
