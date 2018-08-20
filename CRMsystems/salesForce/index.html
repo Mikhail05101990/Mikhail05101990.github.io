@@ -24,8 +24,8 @@
   </md-list-item>
   <md-list-item ng-repeat = "y in controller.site">
     <div style="width: 90%; padding: 0% 0% 0% 5%;">
-      <p class="description">{{y.description}}</p>
-      <a href = {{y.ref}}>{{y.ref}}</a>
+      <p class="description"><a href = {{y.ref}}>{{y.description}}</a></p>
+	  <p><a href = "https://ap4.salesforce.com/_ui/common/apex/debug/ApexCSIPage">Developer console</a></p>
       <p><font color = "red">Login:</font>{{y.login}}</p>
       <p><font color = "red">password:</font>{{y.password}}</p
       <p><a href="https://c.ap4.visual.force.com/apex/Pencil_add_dialog?core.apexpages.request.devconsole=1">View pencil list</a></p>
