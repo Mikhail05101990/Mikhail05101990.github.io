@@ -24,6 +24,10 @@ app.controller('linker', function($scope)
   ref: "https://resources.docs.salesforce.com/sfdc/pdf/salesforce_pages_developers_guide.pdf"
 },
 {
+  description: 'Visualforce Developer Guide (standart controls are described well)',
+  ref: "https://developer.salesforce.com/docs/atlas.en-us.214.0.pages.meta/pages/pages_controller_sosc_about.htm"
+},
+{
   description: 'Huge number of salesforce guides',
   ref: "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"
 }];
