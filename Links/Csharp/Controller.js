@@ -21,6 +21,9 @@ app.controller('linker', function($scope)
 },{
   description: 'Security with individual accounts',
   ref: "https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api"
+},{
+  description: 'Asp.net core migrations when the database was changed',
+  ref: "https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/migrations?view=aspnetcore-2.1&tabs=visual-studio"
 }]
 
 
