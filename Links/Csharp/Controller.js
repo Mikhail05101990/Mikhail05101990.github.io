@@ -24,6 +24,9 @@ app.controller('linker', function($scope)
 },{
   description: 'Asp.net core migrations when the database was changed',
   ref: "https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/migrations?view=aspnetcore-2.1&tabs=visual-studio"
+},{
+  description: 'Asp.net mvc database creating',
+  ref: "https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application"
 }]
 
 
