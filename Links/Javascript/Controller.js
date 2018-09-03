@@ -1,0 +1,16 @@
+/* Mikhail Pavlovich , Misha05101990@gmail.com */
+
+var app = angular.module('linksapp', ['ngMaterial']);
+
+
+app.controller('linker', function($scope)
+{
+  $scope.title = 'Javascript links'
+
+  this.links2 = [{
+    description: 'Javascript basics',
+    ref: "https://www.w3schools.com/js/default.asp"
+  }]
+
+
+});

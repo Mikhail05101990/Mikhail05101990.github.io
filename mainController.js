@@ -134,6 +134,12 @@ app.controller('ctrListToDO', function($scope)
       ref: "Links\\HTML\\index.html"
     }]
 
+  this.links_js = [
+    { name: 'Links',
+      lang: '/js',
+      ref: "Links\\Javascript\\index.html"
+    }]
+    
   this.links_assembler = [
     { name: 'Links',
       lang: '/assembler',
