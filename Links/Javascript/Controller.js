@@ -10,6 +10,9 @@ app.controller('linker', function($scope)
   this.links2 = [{
     description: 'Javascript basics',
     ref: "https://www.w3schools.com/js/default.asp"
+  },{
+    description: 'jquery basics',
+    ref: "https://www.w3schools.com/jquery/default.asp"
   }]
 
 
