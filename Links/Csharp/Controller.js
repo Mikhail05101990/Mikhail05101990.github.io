@@ -27,6 +27,9 @@ app.controller('linker', function($scope)
 },{
   description: 'Asp.net mvc database creating',
   ref: "https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application"
+},{
+  description: 'Helpers (Asp.net mvc)',
+  ref: "https://metanit.com/sharp/mvc5/4.5.php"
 }]
 
 
