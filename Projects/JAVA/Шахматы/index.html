@@ -1,0 +1,125 @@
+<HTML>
+ <HEAD>
+ <TITLE>Шахматы</TITLE>
+<link rel="stylesheet" href="../../projectStyles.css"/>
+ </HEAD>
+ <BODY>
+<div class = "title">
+    <center>
+        <h1>Шахматы</h1>
+    </center>
+    <p>Вы можете прочитать оригинал задания <a href="http://acmp.ru/index.asp?main=task&id_task=6">По ссылке</a>
+    </p>
+    <p><a download="chess.zip" href="chess.zip">Загрузить zip-архив проекта</a>, разработано в Eclipse</p> 
+</div>
+<p class = "description">Задание: Совсем недавно Вася занялся программированием и решил реализовать собственную программу для игры в шахматы. Но у него возникла проблема определения правильности хода конем, который делает пользователь. Т.е. если пользователь вводит значение «C7-D5», то программа должна определить это как правильный ход, если же введено «E2-E4», то ход неверный. Так же нужно проверить корректность записи ввода: если например, введено «D9-N5», то программа должна определить данную запись как ошибочную. Помогите ему осуществить эту проверку!</p>
+<div>
+<p class = "description">Содержимое класса MainClass:</p>
+<pre class = "code">
+package chess;
+import java.util.Scanner;
+public class MainClass {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    char[] symbol = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+    char[] digital = {'1', '2', '3', '4', '5', '6', '7', '8'};
+    System.out.println("Введите правильный ход");
+    String xod = sc.nextLine().toLowerCase(); 
+    int length = xod.length(); 
+    if (length!=5 && xod!="") 
+    {
+        System.out.println("ERROR");
+    } else
+    {
+        boolean bool2 = false;
+        for (int i = 0; i&lt;5; i++) 
+		&lt;option value="19">{
+        boolean bool1 = false;
+        char charI = xod.charAt(i); 
+        if (i == 0) 
+        {
+            for (int j = 0; j &lt; 8; j++ ) 
+            {                           
+                if (charI == symbol[j])
+                {
+                    bool1 = true;    
+                    break;
+                }
+            }
+        }
+        if (i == 2)
+        {
+            if (charI == '-')
+            {
+                bool1 = true; 
+            } else
+            {
+                break; 
+            }
+        }
+        if (i == 1) 
+        {
+            for (int j = 0; j &lt; 8; j++ )
+            {
+                if (charI == digital[j]) 
+                {                       
+                    bool1 = true;
+                    break;
+                }
+            }
+        }
+        if (i == 3) 
+        {
+            for (int j = 0; j &lt; 8; j++ )
+            {
+                if (charI == symbol[j])
+                {
+                    bool1 = true;		
+                    break;
+                }
+            }
+        }
+        if (i == 4) 
+        {
+            for (int j = 0; j &lt; 8; j++ )
+            {
+                if (charI == digital[j])
+                {
+                    bool1 = true; 
+                    bool2 = true;
+                    break;       
+                }
+            }
+        }
+        if (bool1 != true) 
+        {                  
+            break;        
+        }
+    }
+	if (bool2)
+    {
+        if (xod.compareToIgnoreCase("c7-d5") == 0)
+        {
+            System.out.println("YES");	
+        }else
+        {
+            String[] razd = xod.split("-");
+            if (razd[0].compareToIgnoreCase(razd[1]) == 0)
+            {
+                System.out.println("ERROR");	
+            } else
+            {
+                System.out.println("NO");
+            }
+        }
+    } else
+    {
+        System.out.println("ERROR");
+    }
+}
+}
+</pre>
+</div>
+
+ </BODY>
+ </HTML>

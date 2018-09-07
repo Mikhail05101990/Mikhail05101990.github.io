@@ -1,8 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='snippets'>
 <head>
+  <title>Angular snippets</title>
 <meta charset="utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="Controller.js"></script>
+<link rel="stylesheet" href="../snippetStyle.css">
 </head>
 <body>
+  <div ng-controller="snipcontr as controller">
+<div>
+  <div class = "header">
+      <center>
+          <h2>Angular snippets</h2>
+      </center>
+  </div>
+  <md-list>
+  <md-list-item ng-repeat = "x in controller.snippets1">
+    <div style="width: 90%; padding: 0% 0% 0% 5%;">
+      <p class="title">{{x.title}}</p>
+      <pre class="code">{{x.snip}}</pre>
+      <p class="description">{{x.description}}</p>
+    </div>
+  </md-list-item>
+</md-list>
+</div>
+  </div>
 </body>
 </html>

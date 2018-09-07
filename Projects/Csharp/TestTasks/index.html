@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='appListToDo'>
+<head>
+
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../../projectStyles.css"/>
+
+</head>
+<body>
+<div class = "title">
+    <center>
+        <h1>Numbers and SQL Server</h1>
+    </center>
+    <p>You can
+        <a download="TestTasks.zip" href="TestTasks.zip">download the project in zip</a> and
+        <a download="Задания для тестирования.doc" href="Задания для тестирования.doc">download the specification</a>
+    </p>
+</div>
+<H2 class = "title">First task - Numbers</H2>
+<p class = "description">Main method uses methods of a class CalculateResult to get data from a user and
+to calculate an answer.</p>
+<div class = "code">
+<pre>
+  class Program
+  {
+      static void Main(string[] args)
+      {
+          CalculateResult cl = new CalculateResult();
+          Console.Write("Hello, Enter a number\n");
+          bool bl = false;
+          string input = "";
+          string s = ", ";
+          int[] n;
+          do
+          {
+              input = cl.GetInput();
+              bl = cl.IsNumber(input);
+              if (!bl)
+              {
+                  Console.Write("Iput is not correct, enter again, please\n");
+              }
+
+          } while (!bl);
+          int Number = cl.GetNumber(input);
+          Console.Write("Enter an array\n");
+          do
+          {
+              input = cl.GetInput();
+              n = cl.GetArray(input);
+              if (n.Length == 0)
+              {
+                  Console.Write("Iput is not correct, enter again, please\n");
+              }
+          } while (n.Length == 0);
+          bl = cl.Checking(Number, n);
+          Console.Write("Enterd number is " + Number.ToString() + "\n");
+          Console.Write("Enterd array is ");
+          for (int i = 0; i &lt; n.Length; i++)
+          {
+              if (i == n.Length -1)
+              {
+                  s = "\n";
+              }
+              Console.Write(n[i] + s);
+          }
+          if (bl)
+          {
+              Console.Write("Yes\n");
+          } else
+          {
+              Console.Write("No\n");
+          }
+          Console.Write("Press any character to quit");
+          Console.ReadKey();
+      }
+</pre>
+</div>
+<p class = "description">There is a method GetInput to read a string input, an IsNumber method
+to check if input is correct, a GetNumber and a GetArray methods to convert
+an input to int type data, a method Checking to check if entered numbers are truth
+in the Class CalculateResult. The method Checking obtains two variables. They
+are a num and an arr. num is any integer number, arr is an array of entered
+numbers.</p>
+<div class = "code">
+<pre>
+  class CalculateResult
+  {
+      public string GetInput()
+      {
+          string input;
+          input = Console.ReadLine();
+          return input;
+      }
+      public bool IsNumber(string str)
+      {
+          int value;
+          bool bl = Int32.TryParse(str, out value);
+          if (!bl || value == 0)
+          {
+              return false;
+          } else
+          {
+              return bl;
+          }
+      }
+      public int GetNumber(string str)
+      {
+          int Number;
+          bool bl = Int32.TryParse(str, out Number);
+          return Number;
+      }
+      public int[] GetArray(string str)
+      {
+          int[] n = str.Split(' ', ',', '.', ';').Select(e => GetNumber(e)).ToArray();
+          n = n.Where(x => x != 0).ToArray();
+          return n;
+      }
+      public bool Checking(int num, int[] arr)
+      {
+          double res = num;
+          for (int i = 0; i &lt;arr.Length; i++)
+          {
+              res = res / arr[i];
+          }
+          if (res != 1)
+          {
+              return false;
+          } else
+          {
+              return true;
+          }
+      }
+  }
+</pre>
+</div>
+<H2 class = "title">Second task - Sheme of database</H2>
+<div class = "title">
+    <p>You can download<a download="Структура БД.pdf" href="Структура БД.pdf">the sheme in pdf</a></p>
+</div>
+<p class = "description">There are 10 tables in the sheme. A table Personal_data connects with other
+tables by EmployeeId. A table Skills keeps information about fields of Skills
+that an employee had. Other tables contains detail data about employee skills.</p>
+<H2 class = "title">Third task - View</H2>
+<p class = "description">We have created a table with a query:</p>
+<div class = "code">
+<pre>
+  CREATE TABLE Passport
+  (First_name nchar(20) not null,
+  Last_name nchar(15) not null,
+  Passport_series nchar(10) not null,
+  Passport_number nchar(20) not null
+  );
+  ALTER TABLE Passport
+      ADD CONSTRAINT pr_key PRIMARY KEY (Passport_series,Passport_number)
+</pre>
+</div>
+<p class = "description">We seeded table with data. Now the view that show you all passports
+of a man would be look like it:</p>
+<div class = "code">
+<pre>
+  CREATE VIEW dbo.Pass
+  AS
+  SELECT  soh.First_name,
+          soh.Last_name,
+          soh.Passport_series,
+          soh.Passport_number
+  FROM dbo.Passport AS soh
+          JOIN Passport AS sod
+          ON sod.Passport_series = 'KT        ' AND sod.Passport_number = '231231              '
+  WHERE   soh.First_name = sod.First_name AND soh.Last_name = sod.Last_name;
+</pre>
+</div>
+</body>
+</html>

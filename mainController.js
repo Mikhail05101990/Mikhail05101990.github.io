@@ -50,55 +50,55 @@ app.controller('ctrListToDO', function($scope)
 	this.my_Csharp_projects = [
 	{
 	name: 'Bus ticket shop',
-	ref: "Csharp\\BusTicketShop\\index.html"
+	ref: "Projects\\Csharp\\BusTicketShop\\index.html"
 	},
 	{
 	name: 'Student list',
-	ref: "Csharp\\Students\\index.html"
+	ref: "Projects\\Csharp\\Students\\index.html"
 	},
 	{
 	name: 'Numbers and SQL Server',
-	ref: "Csharp\\TestTasks\\index.html"
+	ref: "Projects\\Csharp\\TestTasks\\index.html"
 	},
 	{
 	name: 'Grandfather',
-	ref: "Csharp\\Grandfather\\index.html"
+	ref: "Projects\\Csharp\\Grandfather\\index.html"
 	}]
 
 	this.my_java_projects = [
 	{
 	name: 'Statistics',
-	ref: "JAVA\\Arithmetic\\arifmetika.html"
+	ref: "Projects\\JAVA\\Арифметика\\arifmetika.html"
 	},
 	{
 	name: 'Homework',
-	ref: "JAVA\\Домашнее_задание\\school.html"
+	ref: "Projects\\JAVA\\Домашнее_задание\\index.html"
 	},
 	{
 	name: 'Chess',
-	ref: "JAVA\\Шахматы\\Шахматы.html"
+	ref: "Projects\\JAVA\\Шахматы\\index.html"
 	}]
 
 	this.my_javascript_projects = [
 	{
 	name: 'Loss calculation',
-	ref: "JAVASCRIPT\\poteri\\open-write-file.html"
+	ref: "Projects\\JAVASCRIPT\\poteri\\open-write-file.html"
 	},
 	{
 	name: 'Random strings',
-	ref: "JAVASCRIPT\\random_string\\random-string.html"
+	ref: "Projects\\JAVASCRIPT\\random_string\\random-string.html"
 	}]
 
 		this.my_angular_projects = [
 	{
 	name: 'List to do',
-	ref: "ANGULAR\\list-to-do\\index.html"
+	ref: "Projects\\ANGULAR\\list-to-do\\index.html"
 	}]
 
   this.my_crmSystems = [
   {
   name: 'Cloud org',
-  ref: "CRMsystems\\salesForce\\index.html"
+  ref: "Projects\\CRMsystems\\salesForce\\index.html"
   }]
 
   this.links_git = [

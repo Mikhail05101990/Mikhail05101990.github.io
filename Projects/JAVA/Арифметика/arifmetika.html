@@ -1,0 +1,99 @@
+
+ <HTML>
+ <HEAD>
+ <TITLE>Статистика</TITLE>
+<link rel="stylesheet" href="../../projectStyles.css"/>
+ </HEAD>
+ <BODY>
+<div class = "title">
+    <center>
+        <h1>Статистика</h1>
+    </center>
+    <p>Вы можете прочитать оригинал задания <a href="http://acmp.ru/index.asp?main=task&id_task=5">По ссылке</a>
+    </p>
+    <p><a download="arifmetika.zip" href="arifmetika.zip">Загрузить zip-архив проекта</a>, разработано в Eclipse</p> 
+</div>
+<p class = "description">Задание: Вася не любит английский язык, но каждый раз старается получить хотя бы четверку за четверть, чтобы оставаться ударником. В текущей четверти Вася заметил следующую закономерность: по нечетным дням месяца он получал тройки, а по четным – четверки. Так же он помнит, в какие дни он получал эти оценки. Поэтому он выписал на бумажке все эти дни для того, чтобы оценить, сколько у него троек и сколько четверок. Помогите Васе это сделать, расположив четные и нечетные числа в разных строчках. Вася может рассчитывать на оценку 4, если четверок не меньше, чем троек.</p>
+<div>
+<p class = "description">Содержимое класса MainClass:</p>
+<pre class = "code">
+package arifmetika;
+import java.util.Scanner;
+
+public class MainClass {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int size;
+    int[] arr;
+    int min = 0;
+    int max = 0;
+    int posMin = 0;
+    int posMax = 0;
+    int sym = 0;
+    boolean counter = false;
+    int mnoz = 0;
+    System.out.println("Введите количество оценок");
+    size = sc.nextInt();
+    arr = new int[size];
+    for (int i = 0; i&lt;size; i++)
+    {
+        System.out.println("Введите оценку");
+        arr[i] = sc.nextInt();
+        if (arr[i]>0)
+        {
+            sym += arr[i];
+        }
+        if (i == 0)
+        {
+            min = arr[i];
+            max = arr[i];
+            posMin = 0;
+        } else
+        {
+            if (arr[i] > max)
+            {
+                max = arr[i];
+                posMax = i;
+            }
+            if (arr[i] &lt;min)
+            {
+                min = arr[i];
+                posMin = i;
+            }
+        }
+    }
+    if (posMin &lt;posMax)
+    {
+	     for (int i = posMin + 1; i &lt;posMax; i++)
+         {
+             if (counter)
+             {
+                 mnoz = mnoz*arr[i];
+             } else
+             {
+                 mnoz = arr[i];
+                 counter = true;
+             }
+         }
+    } else
+    {
+        for (int i = posMax + 1; i &lt;posMin; i++)
+        {
+            if (counter)
+            {
+                mnoz = mnoz*arr[i];
+            } else
+            {
+                mnoz = arr[i];
+                counter = true;
+            }
+        }
+    }
+    System.out.println("" + sym + " " + mnoz);
+}
+}
+</pre>
+</div>
+
+ </BODY>
+ </HTML>

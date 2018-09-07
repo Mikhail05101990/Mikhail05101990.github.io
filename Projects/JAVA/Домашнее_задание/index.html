@@ -1,0 +1,73 @@
+<HTML>
+ <HEAD>
+ <TITLE>Школа</TITLE>
+<link rel="stylesheet" href="../../projectStyles.css"/>
+ </HEAD>
+ <BODY>
+<div class = "title">
+    <center>
+        <h1>Домашнее задание</h1>
+    </center>
+    <p>Вы можете прочитать оригинал задания <a href="http://acmp.ru/index.asp?main=task&id_task=9">По ссылке</a>
+    </p>
+    <p><a download="school.zip" href="school.zip">Загрузить zip-архив проекта</a>, разработано в Eclipse</p> 
+</div>
+<p class = "description">Задание: Петя успевает по математике лучше всех в классе, поэтому учитель задал ему сложное домашнее задание, в котором нужно в заданном наборе целых чисел найти сумму всех положительных элементов, затем найти где в заданной последовательности находятся максимальный и минимальный элемент и вычислить произведение чисел, расположенных между ними. Так же известно, что минимальный и максимальный элемент встречаются в заданном множестве чисел только один раз. Поскольку задач такого рода учитель дал Пете около ста, то Петя как сильный программист смог написать программу, которая по заданному набору чисел самостоятельно находит решение. А Вам слабо?</p>
+<div>
+<p class = "description">Содержимое класса MainClass:</p>
+<pre class = "code">
+package school;
+import java.util.Scanner;
+public class MainClass {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int size; 
+    int[] arr; 
+    String a1 = "";
+    String b1 = "";	
+    int free = 0; 
+    int four = 0;
+    System.out.println("Введите количество чисел");
+    size = sc.nextInt();
+    arr = new int[size];
+    for (int i = 0; i&lt;size; i++)
+    {
+        System.out.println("Введите элемент массиваы:");
+        arr[i] = sc.nextInt();
+    }
+    for (int i = 0; i&lt;size; i++)
+    {
+        if (arr[i]%2 !=0)
+        {
+            if (a1.length() != 0)
+            {
+                a1 += " ";
+            }
+            a1 += arr[i];
+            free++;
+        } else
+	    {
+            if (b1.length() != 0)
+            {
+                b1 += " ";
+            }
+            b1 += arr[i];
+            four++;
+        }
+    }
+    System.out.println(a1);
+    System.out.println(b1);
+    if (free&lt;=four)
+    {
+        System.out.println("YES");
+    } else
+    {
+        System.out.println("NO");
+    }
+}
+}
+</pre>
+</div>
+
+ </BODY>
+ </HTML>

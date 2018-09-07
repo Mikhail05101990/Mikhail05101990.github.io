@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='appListToDo'>
+<head>
+
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../../projectStyles.css"/>
+
+</head>
+<body>
+<div class = "title">
+    <center>
+        <h1>Student list (MVVM)</h1>
+    </center>
+    <p>You can
+        <a download="WpfStudent.zip" href="WpfStudent.zip">download the project in zip</a> and
+        <a download="ТЗ.docx" href="ТЗ.docx">download the specification</a>
+    </p>
+</div>
+<p class = "description">The app was developed in accordance with MVVM framework and allows you to add and edit student list.
+There is a saving function. Student data is saved in xml format. MainWindow.Xaml contents below.</p>
+<div class = "code">
+<pre>
+&lt;Window x:Class="MVVM.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:local="clr-namespace:MVVM"
+    Title="MainWindow" Height="350" Width="525"&gt
+
+  &lt;Window x:Class="MVVM.MainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      xmlns:local="clr-namespace:MVVM"
+      Title="MainWindow" Height="350" Width="525">
+
+  &lt;Window.Resources>
+      &lt;local:AgeConverter x:Key="ageConverter" />
+      &lt;local:GenderConverter x:Key="genderConverter" />
+
+      &lt;Style TargetType="TextBlock">
+          &lt;Setter Property="FontSize" Value="14" />
+      &lt;/Style>
+      &lt;Style TargetType="TextBox">
+          &lt;Setter Property="FontSize" Value="14" />
+      &lt;/Style>
+    &lt;Style TargetType="Button">
+          &lt;Setter Property="Width" Value="40" />
+          &lt;Setter Property="Margin" Value="5" />
+      &lt;/Style>
+      &lt;Style TargetType="{x:Type ListBoxItem}">
+          &lt;Setter Property="Template">
+              &lt;Setter.Value>
+                  &lt;ControlTemplate TargetType="{x:Type ListBoxItem}">
+                      &lt;Border x:Name="brd" Background="{TemplateBinding Background}">
+                          &lt;ContentPresenter Margin="{TemplateBinding Padding}"/>
+                      &lt;/Border>
+                      &lt;ControlTemplate.Triggers>
+                          &lt;Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                              &lt;Setter Property="Background" Value="Aqua"/>
+                          &lt;/Trigger>
+                          &lt;Trigger Property="IsSelected" Value="True">
+                              &lt;Setter Property="Background" Value="Aquamarine"/>
+                          &lt;/Trigger>
+                      &lt;/ControlTemplate.Triggers>
+                  &lt;/ControlTemplate>
+              &lt;/Setter.Value>
+          &lt;/Setter>
+      &lt;/Style>
+      &lt;Style x:Key="{x:Type ListBox}" TargetType="ListBox">
+          &lt;Setter Property="Template">
+              &lt;Setter.Value>
+                  &lt;ControlTemplate TargetType="ListBox">
+                      &lt;Border
+                            Name="Border"
+                            Background="White"
+                            BorderBrush="Gray"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                          &lt;ScrollViewer
+                              Margin="0"
+                              Focusable="false">
+                              &lt;StackPanel Margin="2" IsItemsHost="True" />
+                          &lt;/ScrollViewer>
+                      &lt;/Border>
+                      &lt;ControlTemplate.Triggers>
+                          &lt;DataTrigger Binding="{Binding Students.Count}" Value="0">
+                              &lt;Setter Property="Visibility" Value="Hidden"/>
+                          &lt;/DataTrigger>
+                      &lt;/ControlTemplate.Triggers>
+                  &lt;/ControlTemplate>
+              &lt;/Setter.Value>
+          &lt;/Setter>
+      &lt;/Style>
+      &lt;Style TargetType="{x:Type Label}">
+          &lt;Setter Property="Visibility" Value="Collapsed"/>
+          &lt;Style.Triggers>
+            &lt;DataTrigger Binding="{Binding Students.Count}" Value="0">
+                  &lt;Setter Property="Visibility" Value="Visible"/>
+                  &lt;Setter Property="FontSize" Value="28"/>
+                  &lt;Setter Property="HorizontalAlignment" Value="Center"/>
+                  &lt;Setter Property="VerticalAlignment" Value="Center"/>
+              &lt;/DataTrigger>
+          &lt;/Style.Triggers>
+      &lt;/Style>
+      &lt;Style BasedOn="{StaticResource {x:Type Button}}" x:Key="EmptyList" TargetType="{x:Type Button}">
+          &lt;Setter Property="IsEnabled" Value="True"/>
+          &lt;Style.Triggers>
+              &lt;DataTrigger Binding="{Binding Students.Count}" Value="0">
+                  &lt;Setter Property="IsEnabled" Value="False"/>
+              &lt;/DataTrigger>
+          &lt;/Style.Triggers>
+      &lt;/Style>
+  &lt;/Window.Resources>
+
+  &lt;Grid>
+      &lt;Grid.ColumnDefinitions>
+          &lt;ColumnDefinition Width="*" />
+          &lt;ColumnDefinition Width="0.8*" />
+      &lt;/Grid.ColumnDefinitions>
+      &lt;Grid.RowDefinitions>
+          &lt;RowDefinition Height="25" />
+          &lt;RowDefinition Height="*" />
+          &lt;RowDefinition Height="0.2*" />
+      &lt;/Grid.RowDefinitions>
+      &lt;Menu Grid.ColumnSpan="2" >
+          &lt;MenuItem Header="Файл">
+              &lt;MenuItem Header="Открыть документ формата:">
+                  &lt;MenuItem Header="Jason" Command="{Binding OpenJsCommand}" />
+                  &lt;MenuItem Header="Html" Command="{Binding OpenHtmlCommand}" />
+              &lt;/MenuItem>
+              &lt;MenuItem Header="Сохранить в формате:">
+                  &lt;MenuItem Header="Jason" Command="{Binding SaveJsCommand}" />
+                  &lt;MenuItem Header="Html" Command="{Binding SaveHtmlCommand}" />
+              &lt;/MenuItem>
+          &lt;/MenuItem>
+      &lt;/Menu>
+      &lt;ListBox Name ="listbox1" AlternationCount="2" Grid.Row="1" ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" SelectionMode="Extended">
+          &lt;ListBox.ItemTemplate>
+              &lt;DataTemplate>
+                  &lt;StackPanel Margin="5">
+                      &lt;TextBlock FontSize="18" Text="{Binding Path=FirstName}" />
+                      &lt;TextBlock Text="{Binding Path=Last}" />
+                  &lt;/StackPanel>
+              &lt;/DataTemplate>
+          &lt;/ListBox.ItemTemplate>
+      &lt;/ListBox>
+      &lt;Label Grid.Row="1" Content="Список пуст"/>
+      &lt;StackPanel Grid.Row="2" Orientation="Horizontal">
+          &lt;Button Name="btn1" Command="{Binding NewStudentCommand}">Add</Button>
+          &lt;Button Style="{StaticResource EmptyList}" Name="btn2" Command="{Binding RemoveCommand}"
+                  CommandParameter="{Binding SelectedItems, ElementName=listbox1}">Delete</Button>
+          &lt;Button Style="{StaticResource EmptyList}" Name="btn3" Command="{Binding EditWindowShowCommand}">Edit</Button>
+      &lt;/StackPanel>
+      &lt;StackPanel Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedStudent}">
+          &lt;TextBlock Text="Информация о студенте"  />
+          &lt;TextBlock Background="Aqua" Text="Имя" />
+          &lt;TextBlock Text="{Binding FirstName}" />
+          &lt;TextBlock Background="Aqua" Text="Фамилия" />
+          &lt;TextBlock Text="{Binding Last}" />
+          &lt;TextBlock Background="Aqua" Text="Возраст" />
+          &lt;TextBlock Text="{Binding Age, Converter={StaticResource ageConverter}}" />
+          &lt;TextBlock Background="Aqua" Text="Пол" />
+          &lt;TextBlock Text="{Binding Gender, Converter={StaticResource genderConverter}}" />
+      &lt;/StackPanel>
+  &lt;/Grid>
+
+  &lt;/Window>
+</pre>
+</div>
+<p class = "description">The file describes a view of main window. There are some triggers, references to converters, necessary controls here. Xaml file of edit window looks like it:</p>
+<div class = "code">
+<pre>
+  &lt;Window x:Class="MVVM.NewStudentDialog"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:local="clr-namespace:MVVM"
+          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+          mc:Ignorable="d"
+          Title="Window1" Height="300" Width="300">
+      &lt;Window.Resources>
+          &lt;Style x:Key="Men" TargetType="{x:Type RadioButton}">
+              &lt;Setter Property="IsChecked" Value="False"/>
+              &lt;Style.Triggers>
+                  &lt;DataTrigger Binding="{Binding Gender}" Value="false">
+                      &lt;Setter Property="IsChecked" Value="True"/>
+                  &lt;/DataTrigger>
+              &lt;/Style.Triggers>
+          &lt;/Style>
+          &lt;Style x:Key="Woman" TargetType="{x:Type RadioButton}">
+              &lt;Setter Property="IsChecked" Value="False"/>
+              &lt;Style.Triggers>
+                  &lt;DataTrigger Binding="{Binding Gender}" Value="true">
+                      &lt;Setter Property="IsChecked" Value="True"/>
+                  &lt;/DataTrigger>
+              &lt;/Style.Triggers>
+          &lt;/Style>
+      &lt;/Window.Resources>
+      &lt;Grid>
+          &lt;StackPanel Grid.Row="1" Grid.Column="1" >
+              &lt;TextBlock Text="Добавление нового студента"  />
+              &lt;TextBlock Background="Aqua" Text="Имя" />
+              &lt;TextBox Text="{Binding FirstName}" />
+              &lt;TextBlock Background="Aqua" Text="Фамилия" />
+              &lt;TextBox Text="{Binding Last}" />
+              &lt;TextBlock Background="Aqua" Text="Возраст" />
+              &lt;TextBox Text="{Binding Age}" />
+              &lt;TextBlock Background="Aqua" Text="Пол" />
+              &lt;RadioButton Style="{StaticResource Men}" Command="{Binding PickMen}" GroupName="gender1" Content="Men"/>
+              &lt;RadioButton Style="{StaticResource Woman}" Command="{Binding PickWoman}" GroupName="gender1" Content="Woman"/>
+              &lt;Grid>
+                  &lt;Grid.ColumnDefinitions>
+                      &lt;ColumnDefinition Width="0.2*" />
+                      &lt;ColumnDefinition Width="0.5*" />
+                      &lt;ColumnDefinition Width="*" />
+                      &lt;ColumnDefinition Width="0.5*" />
+                      &lt;ColumnDefinition Width="0.2*" />
+                  &lt;/Grid.ColumnDefinitions>
+                  &lt;Grid.RowDefinitions>
+                      &lt;RowDefinition Height="40" />
+                      &lt;RowDefinition Height="0.2*" />
+                  &lt;/Grid.RowDefinitions>
+                  &lt;Button Grid.Row="1" Grid.Column="1" Click="OnYes">Ok&lt;/Button>
+                  &lt;Button Grid.Row="1" Grid.Column="3" Click="closed" IsCancel="True">Cancel&lt;/Button>
+              &lt;/Grid>
+          &lt;/StackPanel>
+
+      &lt;/Grid>
+  &lt;/Window>
+</pre>
+</div>
+<p class = "description">View model MainVM based on an interface INotifyPropertyChanged. MainVM contains declarations of classes
+HtmlFileReader, JsonReader, PickedFile that used for reading student list from a textfile. Student
+DataSource is ObservableCollection&lt;Student>. For editing student list declared commands NewStudentCommand,
+EditWindowShowCommand, RemoveCommand. To read and write the data defined commands SaveJsCommand,
+SaveHtmlCommand, OpenJsCommand, OpenHtmlCommand.</p>
+<div class = "code">
+<pre>
+  public class MainVM : INotifyPropertyChanged
+  {
+      private Student selectedStudent;
+      private ObservableCollection&lt;Student> students = new ObservableCollection&lt;Student>();
+      private HtmlFileReader HtmlReader;
+      private JsonFileReader JsonReader;
+      private PathPicked PickedFile;
+
+      public MainVM(PathPicked PickedFile, HtmlFileReader HtmlReader, JsonFileReader JsonReader)
+      {
+          this.PickedFile = PickedFile;
+          this.HtmlReader = HtmlReader;
+          this.JsonReader = JsonReader;
+
+          FileInfo fileInfo = new FileInfo(AppDomain.CurrentDomain.BaseDirectory + @"\Students.xml");
+          if (fileInfo.Exists)
+          {
+              var students = HtmlReader.Open(AppDomain.CurrentDomain.BaseDirectory + @"\Students.xml");
+              foreach (var p in students)
+                  Students.Add(p);
+          }
+      }
+      public ObservableCollection&lt;Student> Students
+      {
+          get { return students; }
+          set { students = value; }
+      }
+      public Student SelectedStudent
+      {
+          get { return selectedStudent; }
+          set
+          {
+              selectedStudent = value;
+              OnPropertyChanged("SelectedStudent");
+          }
+      }
+      private RelayCommand newStudentCommand;
+      public RelayCommand NewStudentCommand
+      {
+          get
+          {
+              return newStudentCommand ??
+                (newStudentCommand = new RelayCommand(obj =>
+                {
+                    StudentViewModel stVM;
+                    if (selectedStudent != null)
+                    {
+                        stVM = new StudentViewModel(selectedStudent, students, true);
+                    } else
+                    {
+                        stVM = new StudentViewModel(new Student(), students, true);
+                    }
+                    NewStudentDialog w1 = new NewStudentDialog(stVM);
+                    w1.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                    w1.ShowDialog();
+                }));
+          }
+      }
+      private RelayCommand editWindowShowCommand;
+      public RelayCommand EditWindowShowCommand
+      {
+          get
+          {
+              return editWindowShowCommand ??
+                (editWindowShowCommand = new RelayCommand(obj =>
+                {
+                    if (selectedStudent!=null)
+                    {
+                        StudentViewModel stVM = new StudentViewModel(selectedStudent, students, false);
+                        NewStudentDialog w1 = new NewStudentDialog(stVM);
+                        w1.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+                        w1.ShowDialog();
+                    }
+                }));
+          }
+      }
+      private RelayCommand removeCommand;
+      public RelayCommand RemoveCommand
+      {
+          get
+          {
+              return removeCommand ??
+                (removeCommand = new RelayCommand(obj =>
+                {
+                    if (SelectedStudent != null)
+                    {
+
+                        if (PickedFile.Dialog())
+                        {
+                            Collection&lt;object> b = (Collection&lt;object>)obj;
+                            List&lt;Student> list = b.Cast&lt;Student>().ToList();
+                            list.ForEach(std => Students.Remove(std));
+                            PickedFile.ShowMessage("Выбранные студенты удалены");
+                        }
+                    }
+                }));
+          }
+      }
+      private RelayCommand saveJsCommand;
+      public RelayCommand SaveJsCommand
+      {
+          get
+          {
+              return saveJsCommand ??
+                (saveJsCommand = new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        if (PickedFile.SaveFileDialog() == true)
+                        {
+                            JsonReader.Save(PickedFile.FilePath, Students.ToList());
+                            PickedFile.ShowMessage("Файл сохранен");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        PickedFile.ShowMessage(ex.Message);
+                    }
+                }));
+          }
+      }
+      private RelayCommand saveHtmlCommand;
+      public RelayCommand SaveHtmlCommand
+      {
+          get
+          {
+              return saveHtmlCommand ??
+                (saveHtmlCommand = new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        if (PickedFile.SaveFileDialog() == true)
+                        {
+                            HtmlReader.Save(PickedFile.FilePath, Students.ToList());
+                            PickedFile.ShowMessage("Файл сохранен");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        PickedFile.ShowMessage(ex.Message);
+                    }
+                }));
+          }
+      }
+      private RelayCommand openJsCommand;
+      public RelayCommand OpenJsCommand
+      {
+          get
+          {
+              return openJsCommand ??
+                (openJsCommand = new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        if (PickedFile.OpenFileDialog() == true)
+                        {
+                            var students = JsonReader.Open(PickedFile.FilePath);
+                            Students.Clear();
+                            foreach (var p in students)
+                                Students.Add(p);
+                            PickedFile.ShowMessage("Файл открыт");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        PickedFile.ShowMessage(ex.Message);
+                    }
+                }));
+          }
+      }
+      private RelayCommand openHtmlCommand;
+      public RelayCommand OpenHtmlCommand
+      {
+          get
+          {
+              return openHtmlCommand ??
+                (openHtmlCommand = new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        if (PickedFile.OpenFileDialog() == true)
+                        {
+                            var students = HtmlReader.Open(PickedFile.FilePath);
+                            Students.Clear();
+                            foreach (var p in students)
+                                Students.Add(p);
+                            PickedFile.ShowMessage("Файл открыт");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        PickedFile.ShowMessage(ex.Message);
+                    }
+                }));
+          }
+      }
+
+      public event PropertyChangedEventHandler PropertyChanged;
+      public void OnPropertyChanged([CallerMemberName]string prop = "")
+      {
+          if (PropertyChanged != null)
+              PropertyChanged(this, new PropertyChangedEventArgs(prop));
+      }
+  }
+</pre>
+</div>
+<p class = "description">View model StudentViewModel based on an interface INotifyPropertyChanged too. The class constructor
+obtains references to a sample of class Student, student list Students and a bool variable. Bool variable
+bl is because the same function is used for editing and adding a student.</p>
+<div class = "code">
+<pre>
+  public class StudentViewModel : INotifyPropertyChanged
+  {
+      private ObservableCollection&lt;Student> students;
+      private bool? dialogResult = null;
+      Student student;
+      Message MS = new Message();
+      private string firstName;
+      private string lastName;
+      private int age;
+      private bool? gender = null;
+      private bool act;
+
+      public StudentViewModel(Student s, ObservableCollection&lt;Student> students, bool bl)
+      {
+          firstName = s.FirstName;
+          lastName = s.Last;
+          age = s.Age;
+          gender = s.Gender;
+          act = bl;
+          student = s;
+          this.students = students;
+      }
+      public string FirstName
+      {
+          get { return firstName; }
+          set
+          {
+                  firstName = value;
+          }
+      }
+      public string Last
+      {
+          get { return lastName; }
+          set
+          {
+                  lastName = value;
+          }
+      }
+      public int Age
+      {
+          get { return age; }
+          set
+          {
+                  age = value;
+          }
+      }
+      public bool? Gender
+      {
+          get { return gender; }
+          set
+          {
+                  gender = value;
+          }
+      }
+      private RelayCommand pickMen;
+      public RelayCommand PickMen
+      {
+          get
+          {
+              return pickMen ??
+                (pickMen = new RelayCommand(obj =>
+                {
+                    gender = false;
+                }));
+          }
+      }
+      private RelayCommand pickWoman;
+      public RelayCommand PickWoman
+      {
+          get
+          {
+              return pickWoman ??
+                (pickWoman = new RelayCommand(obj =>
+                {
+                    gender = true;
+                }));
+          }
+      }
+      private bool checkValues()
+      {
+          bool b1 = true;
+          if (firstName == "")
+          {
+              MS.ShowMessage("The field First name can not be empty");
+              b1 = false;
+          }
+          if (lastName == "")
+          {
+              MS.ShowMessage("The field Last name can not be empty");
+              b1 = false;
+          }
+          if (age > 0)
+          {
+              if (age &lt;16)
+              {
+                  MS.ShowMessage("The age can not be less 16");
+                  b1 = false;
+              }
+              if (age >100)
+              {
+                  MS.ShowMessage("The age can not be more 100");
+                  b1 = false;
+              }
+          } else
+          {
+              MS.ShowMessage("The age can not be equal or less zero");
+              b1 = false;
+          }
+          if (gender == null)
+          {
+              MS.ShowMessage("The gender is not picked");
+              b1 = false;
+          }
+
+          return b1;
+      }
+      public bool? DialogResult
+      {
+          get { return dialogResult; }
+          set
+          {
+              dialogResult = value;
+              if (dialogResult == true)
+              {
+                  if (checkValues())
+                  {
+                      Student NWS = new Student { FirstName = firstName, Last = lastName, Age = age, Gender = gender };
+                      if (act)
+                      {
+                          students.Add(NWS);
+                      }
+                      else
+                      {
+                          student.FirstName = firstName;
+                          student.Last = lastName;
+                          student.Age = age;
+                          student.Gender = gender;
+                      }
+                  }
+              }
+          }
+      }
+
+      public event PropertyChangedEventHandler PropertyChanged;
+      public void OnPropertyChanged([CallerMemberName]string prop = "")
+      {
+          if (PropertyChanged != null)
+              PropertyChanged(this, new PropertyChangedEventArgs(prop));
+      }
+  }
+</pre>
+</div>
+<p class = "description">The code below returns result of the dialog. This value is used
+to recognize that a user confirmed changes.</p>
+<div class = "code">
+  <pre>
+    public partial class NewStudentDialog : Window
+    {
+        public NewStudentDialog(StudentViewModel VM)
+        {
+            InitializeComponent();
+            DataContext = VM;
+            Closed += (o, args) => BindableDialogResult = DialogResult;
+            SetBinding(BindableDialogResultProperty, new Binding("DialogResult"));
+        }
+        void OnYes(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
+        void closed(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
+        public bool? BindableDialogResult
+        {
+            get { return (bool?)GetValue(BindableDialogResultProperty); }
+            set { SetValue(BindableDialogResultProperty, value); }
+        }
+
+        public static readonly DependencyProperty BindableDialogResultProperty =
+            DependencyProperty.Register("BindableDialogResult", typeof(bool?), typeof(NewStudentDialog),
+                new FrameworkPropertyMetadata(
+                    null,
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+    }
+  </pre>
+</div>
+<p class = "description">There are four fields in the Student class, they are a first, a last, an age, a gender.
+To connect with textboxes of NewStudentDialog the Student class contains
+four fields constractors. There are conditions to chenge or add data
+that serve the purpose of maintaining data integrity.</p>
+<div class = "code">
+  <pre>
+    public class Student : INotifyPropertyChanged
+    {
+        private string first;
+        private string last;
+        private int age;
+        private bool? gender;
+
+        public string FirstName
+        {
+            get { return first; }
+            set
+            {
+                if (value != "")
+                {
+                    first = value;
+                    OnPropertyChanged("FirstName");
+                }
+
+            }
+        }
+        public string Last
+        {
+            get { return last; }
+            set
+            {
+                if (value != "")
+                {
+                    last = value;
+                    OnPropertyChanged("Last");
+                }
+
+            }
+        }
+        public int Age
+        {
+            get { return age; }
+            set
+            {
+                if (value >= 16 & value &lt;=100)
+                {
+                    age = value;
+                    OnPropertyChanged("Age");
+                }
+
+            }
+        }
+        public bool? Gender
+        {
+            get { return gender; }
+            set
+            {
+                gender = value;
+                OnPropertyChanged("Gender");
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+    }
+  </pre>
+</div>
+<p class = "description">For getting the data from a file declared interface FilePickedInterface.
+Class PathPicked implements methods of this interface and returns a path
+to the file througth the string variable FilePath.</p>
+<div class = "code">
+  <pre>
+    public interface FilePickedInterface
+    {
+        void ShowMessage(string message);
+        string FilePath { get; set; }
+        bool OpenFileDialog();
+        bool SaveFileDialog();
+    }
+    public class PathPicked : FilePickedInterface
+    {
+        public string FilePath { get; set; }
+
+        public bool OpenFileDialog()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                FilePath = openFileDialog.FileName;
+                return true;
+            }
+            return false;
+        }
+        public bool SaveFileDialog()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                FilePath = saveFileDialog.FileName;
+                return true;
+            }
+            return false;
+        }
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
+        public bool Dialog()
+        {
+            MessageBoxResult message = MessageBox.Show("Вы действительно хотите удалить выбранных студентов?", "Операция удаления", MessageBoxButton.OKCancel);
+            if (message == MessageBoxResult.OK)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+  </pre>
+</div>
+<p class = "description">The application allows you to get student list from any source files
+that can keep data in two formats. For every file format defined
+reader class. Both readers implement interface OpenWriteCalled.
+Class Message implements interface MessageClass and it used for
+showing messages.</p>
+<div class = "code">
+  <pre>
+    public interface OpenWriteCalled
+    {
+        List&lt;Student> Open(string filename);
+        void Save(string filename, List&lt;Student> StudentList);
+    }
+    public interface MessageClass
+    {
+        void ShowMessage(string message);
+    }
+    public class Message : MessageClass
+    {
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
+    }
+  </pre>
+</div>
+<p class = "description">HtmlFileReader converts data from xml format to a student list.
+Every item corresponds to the class StudentItem.</p>
+<div class = "code">
+  <pre>
+    public class HtmlFileReader : OpenWriteCalled
+    {
+        public List&lt;Student> Open(string filename)
+        {
+            List&lt;Student> students = new List&lt;Student>();
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List&lt;Student>), new XmlRootAttribute("Students"));
+
+            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                students = (List&lt;Student>)xmlSerializer.Deserialize(fs);
+            }
+            return students;
+        }
+
+        public void Save(string filename, List&lt;Student> studentList)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List&lt;Student>), new XmlRootAttribute("Students"));
+            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                xmlSerializer.Serialize(fs, studentList);
+            }
+        }
+    }
+    public class StudentItem
+    {
+        public string FirstName;
+        public string Last;
+        public int Age;
+        public bool Gender;
+    }
+  </pre>
+</div>
+<p class = "description">JsonFileReader implements an interface OpenWriteCalled and provides
+reading data that wrote in jason format.</p>
+<div class = "code">
+  <pre>
+    public class JsonFileReader : OpenWriteCalled
+    {
+        public List&lt;Student> Open(string filename)
+        {
+            List&lt;Student> students = new List&lt;Student>();
+            DataContractJsonSerializer jsonFormatter =
+                new DataContractJsonSerializer(typeof(List&lt;Student>));
+            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                students = jsonFormatter.ReadObject(fs) as List&lt;Student>;
+            }
+
+            return students;
+        }
+        public void Save(string filename, List&lt;Student> studentList)
+        {
+            DataContractJsonSerializer jsonFormatter =
+                new DataContractJsonSerializer(typeof(List&lt;Student>));
+            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            {
+                jsonFormatter.WriteObject(fs, studentList);
+            }
+        }
+    }
+  </pre>
+</div>
+<p class = "description">Gender in clas Student is a bool value. Age is only number. These
+data are modified in the view. It is provided by converters AgeConverter
+and GenderConverter.</p>
+<div class = "code">
+  <pre>
+    public class AgeConverter : IValueConverter
+    {
+        int[] rest = new int[4];
+        string text;
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string bit = " лет";
+            int age = (int)value;
+            rest[0] = (age + 9) % 10;
+            rest[1] = (age + 8) % 10;
+            rest[2] = (age + 7) % 10;
+            rest[3] = (age + 6) % 10;
+            if (rest[0] == 0)
+                bit = " год";
+            if (rest[1] == 0 || rest[2] == 0 || rest[3] == 0)
+                bit = " года";
+            text = age.ToString() + bit;
+            return text;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return null;
+        }
+    }
+    public class GenderConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            bool gender = (bool)value;
+
+            if (gender) return "Woman"; else return "Men";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return null;
+        }
+    }
+  </pre>
+</div>
+<p class = "description">The application uses commands to edit and add data. Every command
+inherits propeties of base class RelayCommand.</p>
+<div class = "code">
+  <pre>
+    public class RelayCommand : ICommand
+    {
+        private Action&lt;object> execute;
+        private Func&lt;object, bool> canExecute;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public RelayCommand(Action&lt;object> execute, Func&lt;object, bool> canExecute = null)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return this.canExecute == null || this.canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            this.execute(parameter);
+        }
+    }
+  </pre>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/* цвет */
+/* цвет */
+/* цвет */
+/* отступ */
+/* размер текста */
+.code {
+  position: relative;
+  left: 5%;
+  color: #FFFAFA;
+  background: #696969;
+  max-height: 500px;
+  width: 90%;
+  overflow-y: auto;
+  border: 1px solid #7EC1BC;
+}
+.title{
+  position: relative;
+  left: 5%;
+  right:5%;
+  color: #FFFAFA;
+  width: 90%;
+}
+.description{
+  position: relative;
+  text-align: justify;
+  left: 5%;
+  right:5%;
+  color: #FFFAFA;
+  width: 90%;
+}
+body{
+    background: black;
+    color: #FFFAFA;
+}

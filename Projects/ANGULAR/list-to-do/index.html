@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='appListToDo'>
+<head>
+
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+  
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script src="js/listToDoController.js"></script>  
+  <script src="js/serviceAddTask.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="css/cal.css" />
+  <script type="text/javascript" src="js/cal.js"></script>
+		
+</head>
+<body>
+
+<div ng-controller="ctrListToDO as testCtrl">
+
+<div class="left-area">
+
+<div class = "avatar white">
+<img  src = "img/unknown_user.jpg" class = "image-avatar"> 
+<p class = "text1">Unknown user</p>
+</img>	
+
+</div>
+
+<div class = "panel-project">
+
+<div class = "text2"> 
+Projects 
+<div class = "button-add-project">	 
+<md-button ng-click="openProjectPanel($event)" class="md-icon-button md-accent button-add-project" aria-label="content">
+  <md-icon ng-mood="mood" style = "color: #FFF4F0; border: 0px solid red;"  class="material-icons";">add</md-icon>
+</md-button>
+</div>
+</div>
+
+</div>
+
+<div class = "list-projects white">
+<md-sidenav md-is-locked-open="true" class = "list-projects">
+
+      <md-list>
+
+        <md-list-item ng-repeat="item in projects" class="width75 text-center itemPrUnSelect" ng-click = "selectItem($event)">  
+          {{item.text}}
+        </md-list-item>
+	
+      </md-list>
+
+</md-sidenav>
+</div>
+
+<form ng-submit="testCtrl.addText(testCtrl.nameProject)" class = "project-panel-cvernyt white animationNormal" ng-class="parCverProjectPanel">
+	<center>
+		<h3>Enter a name for the new project</h3>
+		<input type="text" ng-model="testCtrl.nameProject">
+		<div class = "buttons-project">
+		<md-button type = "submit" class="md-raised">add</md-button>
+		<md-button ng-click="closeProjectPanel($event)" class="md-raised">Cancel</md-button>
+		</div>
+	</center>
+</form>
+
+<div  class = "button-log-out white">
+	  <md-button> Log out </md-button>
+</div>
+</div>
+
+<md-content flex layout-padding class = "right-area">
+
+<div class= "searchPanel">
+		
+<input type="search" autocomplete="off" placeholder="enter or select a name project" class="otctyp">
+<div class = "button-search">
+  <md-button class="md-icon-button" aria-label="action">
+    <md-icon class="material-icons">search</md-icon>
+  </md-button>
+</div>
+
+<div class = "button-edit" ng-click ="showPrjMenu($event)">
+	<md-button class="md-icon-button md-accent" aria-label="action">
+		<md-icon class="material-icons">more_horiz</md-icon>
+	</md-button>
+</div>
+</input>
+
+</div>
+
+<md-list class = "list-tasks">
+	<md-list-item ng-mouseenter = "dayTask($index)" ng-class = "day-tasks" ng-repeat = "item in actPrj.tasks | filter:s | orderBy:'date'">
+	<image-no-fill>
+	<font size = 1>{{item.date}}</font>
+	<div style = "background: #FFF5F5;"> 
+	<md-radio-group class="md-primary animationNormal" ng-repeat = "item2 in item.taski">
+	
+	<div class = "task-show animationNormal" ng-click = "taskDone($index)" ng-class = "parShowTask">
+	<md-radio-button>
+		<span><font size = 2>{{item2.text}}</font></span> 
+	</md-radio-button>
+	</div>
+	
+	</md-radio-group>
+	</div>
+	</image-no-fill>
+	</md-list-item>
+</md-list>
+
+<div class = "project-menu-hide white animationNormal" ng-class = "parCverPrjMenu">
+
+<md-button  ng-click = "rmvPr(); hidePrjMenu($event)">remove</md-button>
+<md-button ng-click ="showEditMenu($event); hidePrjMenu($event)">edit</md-button>
+
+</div>
+
+<div class = "edit-menu-hide white animationNormal" ng-class = "parCverEditMenu">
+<center>
+<h3>Enter a new project name</h3>
+<p>Old name: <font color = yellow>{{selectProject}}</font></p>
+<input type="text" ng-model="testCtrl.newName">
+<div>
+<md-button  ng-click = "rewritePrj(testCtrl.newName); hideEditMenu($event)">Ok</md-button>
+<md-button ng-click ="hideEditMenu($event)">Cancel</md-button>
+</div>
+</center>
+</div>
+
+<div class = "button-task-show animationNormal" ng-class = "parShowTaskBtn" ng-click="openTaskPanel($event); hideTaskButton($event)">
+  <md-button class="md-fab md-primary button-add" aria-label="add">
+		<md-icon class="material-icons">add</md-icon>
+  </md-button>
+</div>
+
+<form ng-submit="testCtrl.newTask(testCtrl.text2)" class = "task-panel-cvernyt white animationNormal" ng-class ="parCverTaskPanel">
+
+<div class = "date">
+<input type="text" id="cal1" value="dd-mm-yy">
+</div>
+<div class = "header1 white">New task</div>
+<textarea id = "task1" class = "text3"></textarea>
+<div class = "buttons-task">
+<md-button type = "submit" class="md-raised">Ok</md-button>
+<md-button class="md-raised" ng-click="closeTaskPanel($event); showTaskButton($event)">Cancel</md-button>
+</div>
+
+</form>
+
+</md-content>
+
+
+
+		<script type="text/javascript">
+			$( function() 
+			{
+    			CALENDAR.bind
+				(
+    				document.getElementById( "cal1" ),
+    				{
+    					y4:			true
+    				}
+    			);
+			} );
+		</script>
+
+</div>
+
+</body>
+</html>
