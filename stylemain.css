@@ -16,13 +16,18 @@ md-list{
 }
 /* line 144, ../sass/style.scss */
 md-list-item {
-  padding: 0% 0% 0% 3%; }
+  padding: 0% 0% 0% 3%; 
+}
 
 /* line 149, ../sass/style.scss */
 md-list-item md-button {
   padding: 0% 0% 0% 0%; }
 
-/* line 194, ../sass/style.scss */
+md-list-item, md-list-item .md-list-item-inner {
+    min-height: 20px;
+    height: 20px;
+}
+
 .date {
   position: absolute;
   left: 2.5%;
