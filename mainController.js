@@ -89,11 +89,19 @@ app.controller('ctrListToDO', function($scope)
 	ref: "Projects\\JAVASCRIPT\\random_string\\random-string.html"
 	}]
 
-		this.my_angular_projects = [
-	{
+    this.my_projects = [
+    {
+    name: 'Converter',
+	ref: "Projects\\myProjects\\JS\\index.html",
+    lang: "JS",
+    color: "#FFB4F0"
+    },{
 	name: 'List to do',
-	ref: "Projects\\ANGULAR\\list-to-do\\index.html"
+	ref: "Projects\\myProjects\\ANGULAR\\list-to-do\\index.html",
+    lang: "Angular",
+    color: "#B5C294"
 	}]
+
 
   this.my_crmSystems = [
   {

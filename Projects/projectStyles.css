@@ -24,12 +24,38 @@
 .description{
   position: relative;
   text-align: justify;
+  font-size: 22px;
   left: 5%;
   right:5%;
   color: #FFFAFA;
   width: 90%;
 }
+.inputField{
+  position: relative;
+  left: 5%;
+  font-size: 16px;
+  color: #FFFAFA;
+  background: #696969;
+  min-height: 200px;
+  max-height: 500px;
+  width: 90%;
+  overflow-y: auto;
+  border: 1px solid #7EC1BC;
+}
+.outputField{
+  position: relative;
+  left: 5%;
+  font-size: 16px;
+  color: #FFFAFA;
+  background: #696969;
+  min-height: 300px;
+  max-height: 500px;
+  width: 90%;
+  overflow-y: auto;
+  border: 1px solid #7EC1BC;
+}
 body{
     background: black;
     color: #FFFAFA;
 }
+
