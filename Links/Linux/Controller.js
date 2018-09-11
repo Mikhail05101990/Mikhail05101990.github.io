@@ -8,6 +8,9 @@ app.controller('linker', function($scope)
   $scope.title = 'Linux links'
 
   this.links1 = [{
+    description: 'Download latest raspbian version',
+    ref: "https://www.raspberrypi.org/downloads/raspbian/"
+  },{
     description: 'Working with devices in Ubuntu',
     ref: "http://itautsors.ru/ubuntu-montiruem-fleshkucddvdiso"
   }]
