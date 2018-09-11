@@ -109,6 +109,13 @@ app.controller('ctrListToDO', function($scope)
   ref: "Projects\\CRMsystems\\salesForce\\index.html"
   }]
 
+    this.links_linux = [
+    {
+      name: 'Links',
+      lang: '/LINUX',
+      ref: "Links\\Linux\\index.html"
+    }]
+    
   this.links_git = [
     {
       name: 'Links',

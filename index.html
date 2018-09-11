@@ -47,6 +47,9 @@ My projects
 <md-list-item style = "background: red;">
 Useful links
 </md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.links_linux">
+  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+</md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_git">
   <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
 </md-list-item>
@@ -96,7 +99,7 @@ Stuff
                         <!--<md-button href="https://www.tut.by/">NEWS (tut.by)</md-button>-->
                       </p></div>
 </div>
-<div class = "version"><p>Web site version 1.4.005.018 published 10.09.2018</p></div>
+<div class = "version"><p>Web site version 1.4.005.019 published 11.09.2018</p></div>
 </md-content>
 </div>
 </body>
