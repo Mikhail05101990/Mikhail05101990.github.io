@@ -7,7 +7,7 @@ app.controller('linker', function($scope)
 {
   $scope.title = 'HTML links'
 
-  this.links2 = [{
+  this.links1 = [{
     description: 'Basic knowledge about tags',
     ref: "http://htmlbook.ru/html"
   }]

@@ -7,7 +7,7 @@ app.controller('linker', function($scope)
 {
   $scope.title = 'Javascript links'
 
-  this.links2 = [{
+  this.links1 = [{
     description: 'Javascript basics',
     ref: "https://www.w3schools.com/js/default.asp"
   },{

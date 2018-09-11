@@ -14,10 +14,21 @@ body{
 .description{
   position: relative;
   top: 0%;
-  left: 0%;
+  right:5%;
+  left: 5%;
+  width:90%;
   color: #FFFAFA;
 }
-
+.code {
+  position: relative;
+  color: #FFFAFA;
+  background: #696969;
+  max-width: 100%;
+  min-width: 40%;
+  min-height:20px;
+  overflow-y: auto;
+  border: 1px solid #7EC1BC;
+}
 md-list
 {
   position: absolute;

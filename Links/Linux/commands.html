@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app='linksapp'>
 <head>
-  <title>Assembler links</title>
+  <title>Linux links</title>
 <meta charset="utf-8"/>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
@@ -14,17 +14,21 @@
 </head>
 <body>
   <div ng-controller="linker as controller">
-<div class="header">
-    <h2 class = "header">{{title}}</h2>
+<div>
+  <div class="header">
+    <h2 class = "header">{{title2}}</h2>
   </div>
   <md-list>
-  <md-list-item class = "description" ng-repeat = "y in controller.links1">
-    <div>
-        {{y.description}}
-        <p><a href = {{y.ref}}>{{y.ref}}</a></p>
-    </div> 
+  <md-list-item ng-repeat = "y in controller.commands">
+      <div class="description">
+      <p>{{y.description}}</p>
+          <div>
+            <div class ="code">{{y.text}}</div>
+          </div>
+      </div>
   </md-list-item>
-  </md-list>
+</md-list>
+</div>
   </div>
 </body>
 </html>

@@ -14,19 +14,17 @@
 </head>
 <body>
   <div ng-controller="linker as controller">
-<div class="white">
-  <div class="header">
+<div class="header">
     <h2 class = "header">{{title}}</h2>
   </div>
   <md-list>
-  <md-list-item ng-repeat = "y in controller.links1">
-    <div style="width: 90%; padding: 0% 0% 0% 5%;">
-      <p class="description">{{y.description}}</p>
-      <a href = {{y.ref}}>{{y.ref}}</a>
-    </div>
+  <md-list-item class = "description" ng-repeat = "y in controller.links1">
+    <div>
+        {{y.description}}
+        <p><a href = {{y.ref}}>{{y.ref}}</a></p>
+    </div> 
   </md-list-item>
-</md-list>
-</div>
+  </md-list>
   </div>
 </body>
 </html>
