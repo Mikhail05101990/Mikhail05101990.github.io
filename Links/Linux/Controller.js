@@ -28,6 +28,9 @@ app.controller('linker', function($scope)
   },{
     description: "Setting SSH keys on the Raspberry",
     ref:"https://kamilslab.com/2016/12/17/how-to-set-up-ssh-keys-on-the-raspberry-pi/"
+  },{
+    description:"Set wpa_supplicant",
+    ref:"https://habr.com/post/315960/"
   }]
 
 this.commands = [{
@@ -63,6 +66,9 @@ this.commands = [{
   },{
     description: "Deleting a file in Ubuntu",
     text:"sudo rm -v  /media/RaspiRoot/ssh"
+  },{
+    description:"Erase a disk",
+    text:"sudo dd if=/dev/zero of=/dev/sdd bs=4k && sync"
   }]
 
 $scope.title2 = 'Ubuntu commands'
