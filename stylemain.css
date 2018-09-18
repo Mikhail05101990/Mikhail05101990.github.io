@@ -71,7 +71,7 @@ md-list-item, md-list-item .md-list-item-inner {
   position: absolute;
   height: 150%;
   width: 100%;
-  font-size: 200%;
+  font-size: 150%;
   left: 0%;
   top: 0%;
   background: grey;}
@@ -79,7 +79,8 @@ md-list-item, md-list-item .md-list-item-inner {
 /* line 261, ../sass/style.scss */
 .top-line {
   position:absolute;
-  height: 5%;
+  height: 3.2%;
+  width: 100%;
   top: 0%;
   left:0%; }
 
@@ -96,7 +97,7 @@ md-list-item, md-list-item .md-list-item-inner {
 .left-area {
   position: absolute;
   top: 0%;
-  width: 20%;
+  width: 17%;
   min-height: 100%;
 }
 
@@ -104,8 +105,8 @@ md-list-item, md-list-item .md-list-item-inner {
 .right-area {
   position: absolute;
   top: 0%;
-  left: 20%;
-  width: 80%;
+  left: 17%;
+  width: 83%;
   min-height: 100%;
 }
 

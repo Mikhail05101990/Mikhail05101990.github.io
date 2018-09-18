@@ -27,82 +27,85 @@
 Acomplished tasks  <md-menu>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.my_Csharp_projects">
-    <md-button href={{x.ref}}>{{x.name}}<font color = "#FF1217">/C#</font></md-button>
+   <a class = "white" href={{x.ref}}>{{x.name}}<font color = "#FF1217">/C#</font></a>
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.my_Csharp_projects">
+    <a class = "white" href={{x.ref}}>{{x.name}}<font color = "#FF1217">/C#</font></a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.my_javascript_projects">
-    <md-button href={{x.ref}}>{{x.name}}<font color = "#FFB4F0">/js</font></md-button>
+    <a class = "white" href={{x.ref}}>{{x.name}}<font color = "#FFB4F0">/js</font></a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.my_java_projects">
-    <md-button href={{x.ref}}>{{x.name}}<font color = "yellow">/java</font></md-button>
+    <a class = "white" href={{x.ref}}>{{x.name}}<font color = "yellow">/java</font></a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.my_crmSystems">
-    <md-button href={{x.ref}}>{{x.name}}<font color = #800080>/salesforce</font></md-button>
+    <a class = "white" href={{x.ref}}>{{x.name}}<font color = #800080>/salesforce</font></a>
 </md-list-item>
 <md-list-item style = "background: red;">
 My projects
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.my_projects">
-    <md-button href={{x.ref}}>{{x.name}}<font color = {{x.color}}>/{{x.lang}}</font></md-button>
+    <a class = "white" href={{x.ref}}>{{x.name}}<font color = {{x.color}}>/{{x.lang}}</font></a>
 </md-list-item>
 <md-list-item style = "background: red;">
 Useful links
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_linux">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_extensions">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_git">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_angular">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_Csharp">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_angular2">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_html">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_js">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_assembler">
-  <md-button href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</md-button>
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item style = "background: red;">
 Useful snippets
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.snippets_angular">
-    <md-button href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</md-button>
+    <a class = "white" href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.snippets_Csharp">
-    <md-button href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</md-button>
+    <a class = "white" href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.snippets_html">
-    <md-button href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</md-button>
+    <a class = "white" href={{x.ref}}><font color = "#B5C294">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item style = "background: red;">
 Stuff
 </md-list-item>
 <md-list-item>
-    <md-button href="https://mailchimp.com/help/">MailChimp (mail service)</md-button>
+    <a class = "white" href="https://mailchimp.com/help/">MailChimp (mail service)</a>
 </md-list-item>
 </md-list>
 <md-content flex layout-padding class = "right-area">
-<div class = "top-line width100">
-<div class = "resume"><p><md-button href="https://jobs.tut.by/resume/ae494081ff037c8e580039ed1f5a6d73675674">Resume</md-button>
-                        <md-button href="https://www.tut.by/">NEWS (tut.by)</md-button>
-                        <md-button href={{weatherLink}}>weather</md-button>
-                        <md-button href="https://colorscheme.ru/html-colors.html">Colors</md-button>
-                        <!--<md-button href="https://www.tut.by/">NEWS (tut.by)</md-button>-->
+<div class = "top-line">
+<div class = "resume"><p><a class = "white" href="https://jobs.tut.by/resume/ae494081ff037c8e580039ed1f5a6d73675674">Resume</a>
+                        <a class = "white" href="https://www.tut.by/">NEWS (tut.by)</a>
+                        <a class = "white" href={{weatherLink}}>weather</a>
+                        <a class = "white" href="https://colorscheme.ru/html-colors.html">Colors</a>
+                        <!--<a class = "white" href="https://www.tut.by/">NEWS (tut.by)</a>-->
                       </p></div>
 </div>
-<div class = "version"><p>Web site version 1.4.005.023 published 18.09.2018</p></div>
+<div class = "version"><p>Web site version 1.4.006.023 published 18.09.2018</p></div>
 </md-content>
 </div>
 </body>
