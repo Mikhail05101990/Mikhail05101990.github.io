@@ -115,6 +115,13 @@ app.controller('ctrListToDO', function($scope)
       lang: '/LINUX',
       ref: "Links\\Linux\\index.html"
     }]
+
+    this.links_extensions = [
+    {
+      name: 'Links',
+      lang: '/Extensions',
+      ref: "Links\\Extensions\\index.html"
+    }]
     
   this.links_git = [
     {
