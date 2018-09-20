@@ -10,6 +10,9 @@ app.controller('linker', function($scope)
   this.links1 = [{
     description: 'A Simple chrome extension',
     ref: "https://tproger.ru/articles/how-to-build-a-chrome-extension/"
+  },{
+    description: 'Develop a firefox extension',
+    ref: "https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Overlay_Extensions/XUL_School/The_Essentials_of_an_Extension"
   }]
 
 

@@ -189,6 +189,15 @@ app.controller('ctrListToDO', function($scope)
       ref: "Snippets\\HTML\\index.html"
   }]
 
-
+this.notRelatedLinks=[{
+    description: 'Mailchimp(send messages)',
+    ref: "https://mailchimp.com/help/"
+},{
+    description: 'Google API',
+    ref: "https://cloud.google.com/translate/docs/"
+},{
+    description: 'Google API and JS',
+    ref: "https://codepen.io/allurewebsolutions/pen/BRdZdB"
+}]
 
 });

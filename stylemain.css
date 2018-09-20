@@ -59,11 +59,13 @@ md-list-item, md-list-item .md-list-item-inner {
 
 /* line 247, ../sass/style.scss */
 .version {
+  position: absolute;
   color: #FFFAFA;
   font-size: 12px;
-  position: absolute;
   right: 0%;
-  top: -1%; }
+  top: 0%; 
+  z-index: 3;
+}
 
 /* line 254, ../sass/style.scss */
 .resume {
@@ -74,7 +76,10 @@ md-list-item, md-list-item .md-list-item-inner {
   font-size: 150%;
   left: 0%;
   top: 0%;
-  background: grey;}
+  background: black;
+  z-index: 4;
+    
+}
 
 /* line 261, ../sass/style.scss */
 .top-line {
@@ -82,10 +87,13 @@ md-list-item, md-list-item .md-list-item-inner {
   height: 3.2%;
   width: 100%;
   top: 0%;
-  left:0%; }
+  left:0%; 
+  z-index: 3;
+}
 
 .bottom-line {
   position:absolute;
+  position:relative;
   visibility: hidden;
   height: 4%;
   bottom: 0%;
@@ -95,27 +103,24 @@ md-list-item, md-list-item .md-list-item-inner {
 
 /* line 340, ../sass/style.scss */
 .left-area {
-  position: absolute;
+  position: relative;
+  max-width: 23%;
   top: 0%;
-  width: 17%;
+  left: 0;
   min-height: 100%;
+  float: left;
+  z-index: 2;
 }
 
 /* line 349, ../sass/style.scss */
 .right-area {
-  position: absolute;
-  top: 0%;
-  left: 17%;
-  width: 83%;
+  position: relative;
+  top: 4%;
   min-height: 100%;
+  z-index: 1;
 }
 
-.doc{
-position: relative;
-top:25%;
-}
-
-/***************************************************/
+**********************************/
 input{
   text-indent: 1%;
   position: absolute;

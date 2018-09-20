@@ -31,6 +31,9 @@ app.controller('linker', function($scope)
   },{
     description:"Set wpa_supplicant",
     ref:"https://habr.com/post/315960/"
+  },{
+    description:"Firefox extensions",
+    ref:"https://addons.mozilla.org/en-US/firefox/"
   }]
 
 this.commands = [{
