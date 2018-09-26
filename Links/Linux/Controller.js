@@ -72,6 +72,9 @@ this.commands = [{
   },{
     description:"Erase a disk",
     text:"sudo dd if=/dev/zero of=/dev/sdd bs=4k && sync"
+  },{
+      description:"Create zip",
+      text: "zip -r ../NewExtension.xpin.xpi * "
   }]
 
 $scope.title2 = 'Ubuntu commands'
