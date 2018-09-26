@@ -19,6 +19,9 @@ app.controller('linker', function($scope)
   },{
       description:"Firefox extension (45 an later)",
       ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension"
+  },{
+      description:"Firefox extensions. Content scripts",
+      ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts"
   }]
 
 
