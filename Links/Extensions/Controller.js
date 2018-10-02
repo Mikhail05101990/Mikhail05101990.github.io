@@ -11,14 +11,17 @@ app.controller('linker', function($scope)
     description: 'A Simple chrome extension',
     ref: "https://tproger.ru/articles/how-to-build-a-chrome-extension/"
   },{
-    description: 'Develop a firefox extension',
-    ref: "https://developer.mozilla.org/en-US/docs/Archive/Add-ons/Overlay_Extensions/XUL_School/The_Essentials_of_an_Extension"
+    description: 'JS APIs (FireFox)',
+    ref: "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API"
   },{
       description:"XUL tutorial",
       ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Tutorial"
   },{
       description:"Firefox extension (45 an later)",
       ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension"
+  },{
+      description:"Firefox extension (second)",
+      ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension"
   },{
       description:"Firefox extensions. Content scripts",
       ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts"

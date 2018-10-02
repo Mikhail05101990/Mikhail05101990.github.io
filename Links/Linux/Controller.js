@@ -34,6 +34,9 @@ app.controller('linker', function($scope)
   },{
     description:"Firefox extensions",
     ref:"https://addons.mozilla.org/en-US/firefox/"
+  },{
+    description:"Install addons-linter",
+    ref:"https://github.com/mozilla/addons-linter/"
   }]
 
 this.commands = [{
