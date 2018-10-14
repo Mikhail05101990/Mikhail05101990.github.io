@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Structure</title>
+  <link rel="stylesheet" href="../../../projectStyles.css"/>
+  <script type="text/javascript" src="js.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function () {
+  
+        $("#clearBtn").click(function (event) {
+            clearing("inputField");
+        });
+        $("#bufferBtn").click(function (event) {
+            pasteFromBuffer();
+
+        });
+        $("#copyBtn").click(function (event) {
+                copyIntoBuffer('outputField');
+        });
+        $("#convertBtn").click(function (event) {
+                getSharp();
+        });
+        
+
+    });
+        
+        
+        
+        
+        
+    </script>
+    
+</head>
+<body>
+<div class = "title">
+    <center>
+        <h1>Html structure observer</h1>
+    </center>
+</div>
+<div class="description">
+    <input id="inputFile" onclick="loadFile()" type="file"/>
+    <input id="link" />
+    <button id="clearBtn">Загрузить</button>
+</div>
+<p class="description">Полученный код:</p>
+<div class="description"><button id="copyBtn">Копировать</button><button id="convertBtn" click ="getSharp">Преобразовать</button></div>
+<div>
+<TextArea id = "outputField" class = "outputField">
+    </TextArea>
+</div>
+<pre id = "result">
+</pre>
+</body>
+</html>

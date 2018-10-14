@@ -25,13 +25,12 @@
 <div class = "top-line">
 <div class = "resume"><p><a class = "white" href="https://jobs.tut.by/resume/ae494081ff037c8e580039ed1f5a6d73675674">Resume</a>
                         <a class = "white" href="https://www.tut.by/">NEWS (tut.by)</a>
-                        <a class = "white" href={{weatherLink}}>weather</a>
                         <a class = "white" href="https://colorscheme.ru/html-colors.html">Colors</a>
-    <a class = "white" href="https://icons8.com/icon/new-icons/all">icons</a>
+    <a class = "white" href="https://icons8.com/icon/new-icons/all">Icons</a>
                         <!--<a class = "white" href="https://www.tut.by/">NEWS (tut.by)</a>-->
                       </p></div>
 </div>
-<div class = "version"><p>Web site version 1.4.007.028 published 06.10.2018</p></div>
+<div class = "version"><p>Web site version 1.4.007.029 published 14.10.2018</p></div>
 <md-list class="left-area">
 <md-list-item>
 </md-list-item>
@@ -68,6 +67,9 @@ Useful links
 <md-list-item ng-repeat = "x in testCtrl.links_extensions">
   <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.links_drivers">
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
+</md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_git">
   <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
@@ -87,6 +89,9 @@ Useful links
   <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item ng-repeat = "x in testCtrl.links_assembler">
+  <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
+</md-list-item>
+<md-list-item ng-repeat = "x in testCtrl.links_stuff">
   <a class = "white" href={{x.ref}}><font color = "#1C48DB">{{x.name}}</font>{{x.lang}}</a>
 </md-list-item>
 <md-list-item style = "background: red;">

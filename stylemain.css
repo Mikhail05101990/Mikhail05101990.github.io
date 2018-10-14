@@ -9,6 +9,32 @@
   width: 100%;
   height: 80%; }
 
+a{
+    text-decoration:none;
+}
+a:hover{
+    color: black;
+    background: GreenYellow;
+    text-decoration:none;
+}
+a:visited{
+	color:yellow;
+} 
+
+div p a:hover{
+    text-decoration:none;
+}
+
+md-list-item:hover{
+    background: GreenYellow;
+}
+md-list-item a{
+    text-decoration:none;
+}
+md-list-item a:hover{
+    text-decoration:none;
+}
+
 md-list{
   color: #FFFAFA;
   background: #000000;

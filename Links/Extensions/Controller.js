@@ -27,7 +27,7 @@ app.controller('linker', function($scope)
       ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts"
   },{
       description:"Firefox extensions. contentScripts API",
-      ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts"
+      ref:"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript"
   }]
 
 

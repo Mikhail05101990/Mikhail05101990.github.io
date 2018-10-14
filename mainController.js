@@ -45,8 +45,6 @@ app.directive('consolVisibil', ['$document', function($document) {
 
 app.controller('ctrListToDO', function($scope)
 {
-  $scope.weatherLink = "weather\\index.html";
-
 	this.my_Csharp_projects = [
 	{
 	name: 'Bus ticket shop',
@@ -92,7 +90,12 @@ app.controller('ctrListToDO', function($scope)
     this.my_projects = [
     {
     name: 'Converter',
-	ref: "Projects\\myProjects\\JS\\index.html",
+	ref: "Projects\\myProjects\\JS\\htmlText\\index.html",
+    lang: "JS",
+    color: "#FFB4F0"
+    },{
+    name: 'Html structure',
+	ref: "Projects\\myProjects\\JS\\htmlStructure\\index.html",
     lang: "JS",
     color: "#FFB4F0"
     },{
@@ -121,6 +124,13 @@ app.controller('ctrListToDO', function($scope)
       name: 'Links',
       lang: '/Extensions',
       ref: "Links\\Extensions\\index.html"
+    }]
+    
+    this.links_drivers = [
+    {
+      name: 'Links',
+      lang: '/Drivers',
+      ref: "Links\\Drivers\\index.html"
     }]
     
   this.links_git = [
@@ -166,6 +176,12 @@ app.controller('ctrListToDO', function($scope)
     { name: 'Links',
       lang: '/assembler',
       ref: "Links\\assembler\\index.html"
+    }]
+    
+  this.links_stuff = [
+    { name: 'Links',
+      lang: '/stuff',
+      ref: "Links\\Stuff\\index.html"
     }]
 
   this.snippets_angular = [
