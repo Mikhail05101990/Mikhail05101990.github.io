@@ -1,24 +1,4 @@
-function getSharp(){
-    var bl = "false";
-    var text = $("#inputField").val();
-    var gotBlock = document.getElementById('outputField');
-    var text = convertToVisible(text, bl);
-    gotBlock.value = text;
-    
-    var gotBlock = document.getElementById('result');
-    gotBlock.innerHTML = text;
-}
-
-function convertToVisible(string, bl)
-{
-    var string = string.replace(/\</g, "&lt;");
-    var string = string.replace(/\>/g, "&gt;");
-    if (bl == "true"){
-        var string = string.replace(/\\/g, '\\\\');
-    }
-    
-    return string;
-}
+var stringSource;
 
 function clearing(blockId){
     document.getElementById(blockId).value = "";
@@ -38,35 +18,37 @@ function loadFile()
     };
 }
 
-function copyIntoBuffer(containerid){
 
-try {
-    // современный объект Selection
-    window.getSelection().removeAllRanges();
-  } catch (e) {
-    // для IE8-
-    document.selection.empty();
+
+
+
+
+function reqListener () {
+  console.log(this.responseText);
+}
+
+function getData(){
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://mikhail05101990.github.io/', true);
+    request.responseType = 'document';
+    request.onload = function () {
+  if (xhr.readyState === xhr.DONE) {
+    if (xhr.status === 200) {
+      alert(request.response);
+      alert(request.responseXML);
+    }
   }
-    if (document.selection) { 
-    var range = document.body.createTextRange();
-    range.moveToElementText(document.getElementById(containerid));
-    range.select().createTextRange();
-    document.execCommand("Copy"); 
-} else if (window.getSelection) {
-    var range = document.createRange();
-     range.selectNode(document.getElementById(containerid));
-     window.getSelection().addRange(range);
-     document.execCommand("Copy");
+};
 }
+
+function getStringSource(){
+    reqListener ();
+    getData();
+    alert(stringSource);
 
 }
 
-function pasteFromBuffer(){
-    var range = document.body.createTextRange();
-    range.moveToElementText(document.getElementById(outputField));
-    range.select().createTextRange();
-    document.execCommand("paste");
-}
+
 
     
     

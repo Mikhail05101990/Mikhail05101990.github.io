@@ -24,7 +24,9 @@
         $("#convertBtn").click(function (event) {
                 getSharp();
         });
-        
+        $("#loadHTML").click(function(){
+            getStringSource();
+        })
 
     });
         
@@ -44,7 +46,7 @@
 <div class="description">
     <input id="inputFile" onclick="loadFile()" type="file"/>
     <input id="link" />
-    <button id="clearBtn">Загрузить</button>
+    <button id="loadHTML">Загрузить</button>
 </div>
 <p class="description">Полученный код:</p>
 <div class="description"><button id="copyBtn">Копировать</button><button id="convertBtn" click ="getSharp">Преобразовать</button></div>

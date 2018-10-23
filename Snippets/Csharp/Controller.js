@@ -106,6 +106,54 @@ app.controller('snipcontr', function($scope)
     '\t' + '$("#tableBlock").html(strResult);' + '\n'  +
     '}',
     $description: 'A table is loaded by the function'
+  },{
+      title: "Razor page with fields which constructed by Helper",
+      snip: '<div class="form-group">' + '\n' + 
+                '\t' + '<label class="col-md-2 control-label">Title</label>' + '\n' +
+                '\t' + '<div class="col-md-10">' + '\n' +
+                    '\t' + '\t' + '@Html.TextBoxFor(m => ev.Title, new { @class = "form-control" })' + '\n' +
+                '\t' + '</div>' + '\n' +
+            '</div>' + '\n' +
+            '<div class="form-group">' + '\n' +
+                '\t' + '<label class="col-md-2 control-label">Field name</label>' + '\n' +
+                '\t' + '<div class="col-md-10">' + '\n' +
+                    '\t' + '\t' + '@Html.TextBoxFor(m => ev.Field, new { @class = "form-control" })' + '\n' +
+                '\t' + '</div>' + '\n' +
+            '</div>' + '\n' +
+            '<div class="form-group">' + '\n' +
+                '\t' + '<label class="col-md-2 control-label">Field value</label>' + '\n' +
+                '\t' + '<div class="col-md-10">' + '\n' +
+                    '\t' + '\t' + '@Html.TextBoxFor(m => ev.FieldValue, new { @class = "form-control" })' + '\n' +
+                '\t' + '</div>' + '\n' +
+            '</div>' + '\n' +
+        '<input type="submit" />"' + '\n',
+        description: "Input form with TextBoxFor"
+  },{
+      title: "Razor page with an array",
+      snip: '<div class="form-group">' + '\n' +
+            '\t' + '<label class="col-md-2 control-label">Title</label>' + '\n' +
+            '\t' + '<div class="col-md-10">' + '\n' +
+                '\t' + '\t' + '<input type="text" class="form-control" name="Fields[0].Title" value="" />' + '\n' +
+            '\t' + '</div>' + '\n' +
+        '</div>' + '\n' +
+        '<div class="form-group">' + '\n' +
+            '\t' + '<label class="col-md-2 control-label">Field name</label>'  + '\n' +
+            '\t' + '<div class="col-md-10">' + '\n' +
+                '\t' + '\t' + '<input type="text" class="form-control" name="Fields[0].Field" value="" />' + '\n' +
+            '\t' + '</div>' + '\n' +
+        '</div>' + '\n' +
+        '<div class="form-group">' + '\n' +
+            '\t' + '<label class="col-md-2 control-label">Field value</label>' + '\n' +
+            '\t' + '<div class="col-md-10">' + '\n' +
+                '\t' + '\t' + '<input type="text" class="form-control" name="Fields[0].FieldValue" value="" />' + '\n' +
+            '\t' + '</div>' + '\n' +
+        '</div>' + '\n' +
+        '<div id="lastBlock" class="form-group">' + '\n' +
+            '\t' + '<div class="col-md-offset-2 col-md-10">' + '\n' +
+                '\t' + '\t' + '<input type="submit" id="send" class="btn btn-default" value="Add event" />' + '\n' +
+            '\t' + '</div>' + '\n' +
+        '</div>',
+      description: "Array of fields for a complicated object"
   }]
 
 });
