@@ -16,6 +16,15 @@ app.controller('linker', function($scope)
   },{
       description: "Fetching chunks of data by API",
       ref: "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest"
+  },{
+      description: "Console API",
+      ref: "https://developers.google.com/web/tools/chrome-devtools/console/console-reference?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3#consoledirobject"
+  },{
+      description: "About Cross-origin resource sharing (CORS)",
+      ref: "https://developer.mozilla.org/ru/docs/Web/HTTP/CORS"
+  },{
+      description: "Cross-domain requests With CORS",
+      ref: "https://humanwhocodes.com/blog/2010/05/25/cross-domain-ajax-with-cross-origin-resource-sharing/"
   }]
 
 

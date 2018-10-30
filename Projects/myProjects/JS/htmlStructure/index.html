@@ -2,31 +2,42 @@
 <html lang="en">
 <head>
 
-  <meta charset="UTF-8">
-  <title>Structure</title>
-  <link rel="stylesheet" href="../../../projectStyles.css"/>
-  <script type="text/javascript" src="js.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<meta charset="UTF-8" />
+<title>Structure</title>
+<link rel="stylesheet" href="../../../projectStyles.css"/>
+<script type="text/javascript" src="js.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src = "../../../../JS/test.js"></script>
+<script type="text/javascript" src = "../../../../JS/CORS.js"></script>
+<script type="text/javascript" src = "../../../../JS/OpenFiles.js"></script>
+<script type="text/javascript" src = "../../../../JS/STRING.js"></script>
     
     <script type="text/javascript">
     $(document).ready(function () {
-  
-        $("#clearBtn").click(function (event) {
-            clearing("inputField");
+        
+       addEventListeners(); 
+        
+        clearing();
+        
+        document.getElementById("loadHTML").addEventListener("click", function(){
+            getBody();
         });
-        $("#bufferBtn").click(function (event) {
-            pasteFromBuffer();
-
+        document.getElementById("clear").addEventListener("click", function(){
+            clearing();
         });
-        $("#copyBtn").click(function (event) {
-                copyIntoBuffer('outputField');
+        
+        document.getElementById("copyBtn").addEventListener("click", function(){
+            copyIntoBuffer('outputField');
         });
-        $("#convertBtn").click(function (event) {
-                getSharp();
+        document.getElementById("inputFile").addEventListener("click", function(){
+            LoadFile();  
         });
-        $("#loadHTML").click(function(){
-            getStringSource();
-        })
+        document.getElementById("fetchBody").addEventListener("click", function(){
+             fetchTag("body");
+        });     
+        document.getElementById("fetchHead").addEventListener("click", function(){
+             fetchTag("head");
+        });       
 
     });
         
@@ -44,17 +55,19 @@
     </center>
 </div>
 <div class="description">
-    <input id="inputFile" onclick="loadFile()" type="file"/>
+    <input id="inputFile" type="file"/>
     <input id="link" />
     <button id="loadHTML">Загрузить</button>
 </div>
 <p class="description">Полученный код:</p>
-<div class="description"><button id="copyBtn">Копировать</button><button id="convertBtn" click ="getSharp">Преобразовать</button></div>
-<div>
-<TextArea id = "outputField" class = "outputField">
-    </TextArea>
+<div class="description">
+    <button id="clear">Очистить</button>
+    <button id="copyBtn">Копировать</button>
+    <button id="fetchBody">Body</button>
+    <button id="fetchHead">Head</button>
 </div>
-<pre id = "result">
-</pre>
+<div>
+<pre id = "outputField" class = "frame"></pre>
+</div>
 </body>
 </html>
