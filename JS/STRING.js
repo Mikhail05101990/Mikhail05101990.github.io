@@ -1,14 +1,14 @@
 function tagBgn(tagName, arr){
-    var name = "<" + tagName;
-    var pointStart = arr.indexOf(name);
+    var tagName = "<" + tagName;
+    var pointStart = arr.indexOf(tagName);
     return pointStart;
 }
 
 function tagEnd(tagName, arr){
-    var name = "</" + tagName;
-    var nm = name + ">";
-    var point = arr.lastIndexOf(nm);
-    pointEnd = point + name.length+1;
+    var tagName = "</" + tagName;
+    var tagName = tagName + ">";
+    var pointEnd = arr.lastIndexOf(tagName);
+    var pointEnd = pointEnd + tagName.length;
     return pointEnd;
 }
 

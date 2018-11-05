@@ -5,8 +5,8 @@
 <meta charset="UTF-8" />
 <title>Structure</title>
 <link rel="stylesheet" href="../../../projectStyles.css"/>
-<script type="text/javascript" src="js.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src = "js.js"></script>
+<script type="text/javascript" src = "../../../../JS/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src = "../../../../JS/test.js"></script>
 <script type="text/javascript" src = "../../../../JS/CORS.js"></script>
 <script type="text/javascript" src = "../../../../JS/OpenFiles.js"></script>
@@ -24,10 +24,6 @@
         });
         document.getElementById("clear").addEventListener("click", function(){
             clearing();
-        });
-        
-        document.getElementById("copyBtn").addEventListener("click", function(){
-            copyIntoBuffer('outputField');
         });
         document.getElementById("inputFile").addEventListener("click", function(){
             LoadFile();  
@@ -59,12 +55,12 @@
     <input id="link" />
     <button id="loadHTML">Загрузить</button>
 </div>
-<p class="description">Полученный код:</p>
 <div class="description">
     <button id="clear">Очистить</button>
-    <button id="copyBtn">Копировать</button>
     <button id="fetchBody">Body</button>
     <button id="fetchHead">Head</button>
+    <button id="fetchJS">Javascript</button>
+    <input type="text" id = 'seartTag'/><i class="fas fa-band-aid"></i>
 </div>
 <div>
 <pre id = "outputField" class = "frame"></pre>
