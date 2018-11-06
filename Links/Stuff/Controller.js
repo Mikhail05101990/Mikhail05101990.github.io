@@ -19,6 +19,9 @@ app.controller('linker', function($scope)
   },{
       description:"Weather",
       ref:"..\\..\\weather\\index.html"
+  },{
+      description:"Icons",
+      ref:"..\\Icons\\index.html"
   }]
 
 

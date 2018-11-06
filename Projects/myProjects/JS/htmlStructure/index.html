@@ -8,7 +8,6 @@
 <script type="text/javascript" src = "js.js"></script>
 <script type="text/javascript" src = "../../../../JS/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src = "../../../../JS/test.js"></script>
-<script type="text/javascript" src = "../../../../JS/CORS.js"></script>
 <script type="text/javascript" src = "../../../../JS/OpenFiles.js"></script>
 <script type="text/javascript" src = "../../../../JS/STRING.js"></script>
     
@@ -19,9 +18,6 @@
         
         clearing();
         
-        document.getElementById("loadHTML").addEventListener("click", function(){
-            getBody();
-        });
         document.getElementById("clear").addEventListener("click", function(){
             clearing();
         });
@@ -33,8 +29,10 @@
         });     
         document.getElementById("fetchHead").addEventListener("click", function(){
              fetchTag("head");
-        });       
-
+        });  
+        document.getElementById("link").addEventListener("input", function(e){
+             getValue(this.value);
+        });
     });
         
         
@@ -52,15 +50,15 @@
 </div>
 <div class="description">
     <input id="inputFile" type="file"/>
-    <input id="link" />
-    <button id="loadHTML">Загрузить</button>
+    <input type = "text" placeholder = "Вставить текст" id="link" />
+    <span class="ui-icon ui-icon-search"></span>
 </div>
 <div class="description">
     <button id="clear">Очистить</button>
     <button id="fetchBody">Body</button>
     <button id="fetchHead">Head</button>
     <button id="fetchJS">Javascript</button>
-    <input type="text" id = 'seartTag'/><i class="fas fa-band-aid"></i>
+    <input type="text" id = 'seartTag'/><button id="fetchTag">Найти</button>
 </div>
 <div>
 <pre id = "outputField" class = "frame"></pre>
