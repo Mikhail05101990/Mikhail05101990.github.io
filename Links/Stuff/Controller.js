@@ -22,6 +22,9 @@ app.controller('linker', function($scope)
   },{
       description:"Icons",
       ref:"..\\Icons\\index.html"
+  },{
+      description:"Addons",
+      ref:"Addons\\index.html"
   }]
 
 

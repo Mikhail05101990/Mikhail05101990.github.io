@@ -2,6 +2,7 @@ var fileContent;
 
 function clearing(){
     document.getElementById("outputField").value = "";
+    $("input").val("");
 }
 
 function wChoose(){
@@ -24,6 +25,7 @@ function fetchTag(tagName){
 
 function sortTags(value){
     var tab = "";
+    var prTab = "";
     var start = 0;
     var sorted = "";
     
@@ -55,7 +57,6 @@ function sortTags(value){
                 var start = nextStEnd;
             }
             var sorted = sorted + text;
-            continue;
         }
         //add space
         if((nextStEnd<nextStart) || (nextStart<nextStEnd)){
@@ -70,9 +71,10 @@ function sortTags(value){
             }
         }
         //change tab
+        var prTab = tab;
         if((nextStart<nextStEnd) && (tagStart<tagStEnd)){
             //check for input 
-            if((tgNe=="input")|(tgNe=="img")|(tgNe=="param")){
+            if((tgNe=="input")|(tgNe=="img")|(tgNe=="param")|(tgNe=="br")){
                 var sorted = sorted + tab;
             }else{
                 //add tab
@@ -97,19 +99,50 @@ function sortTags(value){
         var start = nextStart; 
     }while((nextStart!=-1)&&(nextStEnd!=-1));
     
-    
-    
-    
+    if(prTab!=""){
+        return -1;
+    }else{
+        return sorted;
+    }
     
     
 
-    
-
-    
-    return sorted;
 }
 
-function isStart(text){
+function setSelection() {
+    
+    var text = getClass();
+    var content = getText();
+    var content = document.getElementById('outputField').nodeValue;
+    alert(content);
+    // Проверим есть ли совпадения с переданным текстом
+    if (document.createRange) {
+    // Если есть совпадение, и браузер поддерживает Range, создаем объект
+        var rng = document.createRange();
+        // Ставим верхнюю границу по индексу совпадения,
+        rng.setStart(content, 10);
+        // а нижнюю по индексу + длина текста
+        rng.setEnd(content, 30);
+        // Создаем спан с синим фоном
+        var highlightDiv = document.createElement('span');
+        highlightDiv.style.backgroundColor = 'blue';
+        // Обернем наш Range в спан
+        rng.surroundContents(highlightDiv);
+    }
+}
+
+function getText(){
+    var text = $("#outputField").text();
+    return text;
+}
+
+function getClass(){
+    var clue = $("#seartTag").val();
+    if (clue!=""){
+        return clue;
+    }else{
+        return -1;
+    }
     
 }
 
@@ -133,8 +166,12 @@ function getTagName(text, start){
 function getTagEnd(text, tag, start){
     var tag = tag.replace("<", "</");
     var tagEnd = text.indexOf(tag, start);
-    var tagEnd = tagEnd + tag.length+1;
-    return tagEnd;
+    if(tagEnd!= -1){
+        var tagEnd = tagEnd + tag.length+1;
+        return tagEnd;
+    }else{
+        return -1;
+    }
 }   
 
 function sprNstr(text){

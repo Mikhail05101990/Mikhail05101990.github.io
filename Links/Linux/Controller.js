@@ -37,6 +37,9 @@ app.controller('linker', function($scope)
   },{
     description:"Install addons-linter",
     ref:"https://github.com/mozilla/addons-linter/"
+  },{
+    description:"Install Viber",
+    ref:"https://losst.ru/ustanovka-viber-v-ubuntu-16-04"
   }]
 
 this.commands = [{
@@ -78,6 +81,18 @@ this.commands = [{
   },{
       description:"Create zip",
       text: "zip -r ../NewExtension.xpin.xpi * "
+  },{
+      description:"Install deb",
+      text: "sudo dpkg -i ~/Downloads/viber-for-linux-4-2-2-6-en-ubu.deb"
+  },{
+      description:"Install dependences",
+      text: "sudo apt-get install -f"
+  },{
+      description:"Installed packages",
+      text: "dpkg --list"
+  },{
+      description:"Remove with dependences",
+      text: "sudo apt autoremove viber"
   }]
 
 $scope.title2 = 'Ubuntu commands'

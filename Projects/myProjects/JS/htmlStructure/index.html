@@ -33,6 +33,9 @@
         document.getElementById("link").addEventListener("input", function(e){
              getValue(this.value);
         });
+        document.getElementById("fetchTag").addEventListener("click", function(){
+             setSelection();
+        });  
     });
         
         
@@ -58,7 +61,12 @@
     <button id="fetchBody">Body</button>
     <button id="fetchHead">Head</button>
     <button id="fetchJS">Javascript</button>
-    <input type="text" id = 'seartTag'/><button id="fetchTag">Найти</button>
+    <input type="text" id = 'searchTag'/><button id="fetchTag">Найти</button>
+</div>
+<div class = "description ">
+    <button id="previous">&lt;</button>
+    <button id="next">&gt;</button>
+    <label id = "findingResults"></label>
 </div>
 <div>
 <pre id = "outputField" class = "frame"></pre>
