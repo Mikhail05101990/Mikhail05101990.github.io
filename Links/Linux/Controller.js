@@ -93,6 +93,12 @@ this.commands = [{
   },{
       description:"Remove with dependences",
       text: "sudo apt autoremove viber"
+  },{
+      description:"Remove a file",
+      text: "sudo rm -rf /opt/firefox-64.0.tar.bz2"
+  },{
+      description:"Move a directory",
+      text: "sudo mv /media/misha/HEAVYFLASH/firefox /opt"
   }]
 
 $scope.title2 = 'Ubuntu commands'
