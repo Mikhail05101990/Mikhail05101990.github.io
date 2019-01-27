@@ -33,6 +33,9 @@ app.controller('instructor', function($scope)
 },{
   description: 'пакет Microsoft платформа.NET Framework 4.7.2',
   ref: "http://go.microsoft.com/fwlink/?linkid=863265"
+},{
+  description: 'Visual C++ Redistributable Package for Visual Studio 2012',
+  ref: "https://www.microsoft.com/ru-RU/download/details.aspx?id=30679"
 }]
     
 
