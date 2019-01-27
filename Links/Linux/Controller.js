@@ -40,7 +40,13 @@ app.controller('linker', function($scope)
   },{
     description:"Install Viber",
     ref:"https://losst.ru/ustanovka-viber-v-ubuntu-16-04"
+  },{
+    description:"Install VMWare pro",
+    ref:"https://linuxconfig.org/how-to-install-vmware-workstation-on-ubuntu-18-04-bionic-beaver-linux"
   }]
+    
+    
+    
 
 this.commands = [{
     description: "Connected devices",
@@ -99,8 +105,13 @@ this.commands = [{
   },{
       description:"Move a directory",
       text: "sudo mv /media/misha/HEAVYFLASH/firefox /opt"
+  },{
+      description:"Create an iso",
+      text: "sudo mkisofs -o /media/misha/hdd/PrerequisiesSP16.iso -U /media/misha/hdd/PrerequisitesSP16"
   }]
 
+    
+    
 $scope.title2 = 'Ubuntu commands'
     
     
