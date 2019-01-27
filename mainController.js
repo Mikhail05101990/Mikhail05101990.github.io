@@ -218,8 +218,8 @@ app.controller('ctrListToDO', function($scope)
     
   this.instructions = [
   {
-    description: 'Sharepoint setup',
-    ref: "instructions\\Sharepoint.html"
+    description: 'Sharepoint 2016 setup',
+    ref: "instructions\\index.html"
   }]
     
     
