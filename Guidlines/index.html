@@ -1,7 +1,53 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" ng-app='linksapp'>
 <head>
+  <title>Sharepoint</title>
+<meta charset="utf-8"/>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="Controller.js"></script>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
+  <div ng-controller="instructor as controller">
+  <h2 class = "title">{{title}}</h2>
+  <md-list>
+  <md-list-item class = "description">
+    1. Скачиваем SQLServer RTM 2014 SP1(или выше) и дополнительное ПО(ссылки ниже).
+  </md-list-item>
+  <md-list-item class = "description">
+      <div>
+        <p class = "description" ng-repeat= "x in controller.links">
+            <a href={{x.ref}}>{{x.description}}</a>
+        </p>
+      </div>
+  </md-list-item>
+  <md-list-item class = "description">
+    2. Подключаем образ Windows server 2012 R2 на диск D. Устанавливаем Net framework 3.5 (не забываем указать альтернативный путь с диска).
+  </md-list-item>
+  <md-list-item class = "description">
+    3. Устанавливаем SQLServer 2014 SP1 (движок и средства управления). Задаем степень параллелизма для сервера равной единице.
+  </md-list-item>
+  <md-list-item class = "description">
+    4. <a download="installPrerequisitesFromISO.ps1" href="installPrerequisitesFromISO.ps1">Запускаем скрипт из powershell.</a>
+  </md-list-item>
+  <md-list-item class = "description">
+    5. Устанавливаем все скачанные необходимые компоненты, кроме appFabric и кумулятивного обновления для нее (3-я и 4-я ссылки).
+  </md-list-item>
+  <md-list-item class = "description">
+    6. Подключаем к диску D образ установочного диска с Sharepoint 2016. Вводим в powershell команду: "D:\prerequisiteinstaller.exe /appFabric:C:\Users\Administrator\Downloads\WindowsServerAppFabricSetup_x64.exe", где путь справа - путь к скачанному файлу с appFabric. 
+  </md-list-item>
+  <md-list-item class = "description">
+    7. После того, как система перезагрузится, выдаст сообщение о неустановленном кумулятивном пакете устанавливаем накопительный пакет обновления (ссылка 4). Перезагружаемся.
+  </md-list-item>
+  <md-list-item class = "description">
+    8. Система готова к установке sharepoint. Пробный ключ - NQGJR-63HC8-XCRQH-MYVCH-3J3QR.
+  </md-list-item>
+  </md-list>
+  </div>
 </body>
 </html>
