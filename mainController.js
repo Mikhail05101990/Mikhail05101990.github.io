@@ -216,10 +216,10 @@ app.controller('ctrListToDO', function($scope)
     ref: "https://codepen.io/allurewebsolutions/pen/BRdZdB"
   }]
     
-  this.instructions = [
+  this.guidlines = [
   {
     description: 'Sharepoint 2016 setup',
-    ref: "Guidlines\\index.html"
+    ref: "guidlines\\index.html"
   }]
     
     
