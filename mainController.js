@@ -219,7 +219,7 @@ app.controller('ctrListToDO', function($scope)
   this.guidlines = [
   {
     description: 'Sharepoint 2016 setup',
-    ref: "guidlines\\index.html"
+    ref: "Instructions\\index.html"
   }]
     
     
