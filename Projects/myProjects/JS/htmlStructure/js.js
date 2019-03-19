@@ -23,12 +23,6 @@ function fetchTag(tagName){
     inputResponse(text);  
 }
 
-function fetchTagLimited(tagName, number){
-    var text = getTag(fileContent, tagName);
-    var text = sortTagsLimited(text, number);
-    inputResponse(text);  
-}
-
 function sortTags(value){
     var tab = "";
     var prTab = "";
@@ -36,97 +30,97 @@ function sortTags(value){
     var sorted = "";
     
     do{
-        //evaluate current and next tag
+        var openTag;
+        var nextOpenTag;
+        var thereIsText;
+        var tagStartIndex;
+        var nextTagStartIndex;
+        var tag;
+        var rightEnd;
+    
+        //get brackets
         var tagStart = value.indexOf("<", start);
         var tagStEnd = value.indexOf("</", start);
         var tagEnd = tagGap(value,start);
         var nextStart = value.indexOf("<", tagEnd);
         var nextStEnd = value.indexOf("</", tagEnd);
-        //add tag
-        //it is the end tag
-        if(tagStEnd<=tagStart){
-            var tag = value.slice(tagStEnd,tagEnd);
-        }else{
-            //it is the start tag
-            var tgNe = getTagName(value, start);
-            //get tag
-            var tag = value.slice(tagStart,tagEnd);
-        }
-        if(tgNe=="link"){
-            console.log(tag);
-        }
         
-        var sorted = sorted+tag;
-        //add text
-        if((nextStEnd>tagEnd+1)&&(nextStart>tagEnd+1)){
-            //calculation of text range
-            if(tgNe=="script"){
-                var scrEnd = tagEndFrom(tgNe, value, start);
-                var text = value.slice(tagEnd, scrEnd);
-                var sorted = sorted + text;
-                
-                var start = scrEnd +1;
-                var tagStart = value.indexOf("<", start);
-                var tagStEnd = value.indexOf("</", start);
-                var tagEnd = tagGap(value,start);
-                var nextStart = value.indexOf("<", tagEnd);
-                var nextStEnd = value.indexOf("</", tagEnd);
-            }else{
+        if(tagStart<tagStEnd){
+            openTag = "true";
+            tagStartIndex = tagStart;
+        }else{
+            openTag = "false";
+            tagStartIndex = tagStEnd;
+        }
+        if(nextStart<nextStEnd){
+            nextOpenTag = "true";
+            nextTagStartIndex = nextStart; 
+        }else{
+            nextOpenTag = "false";
+            nextTagStartIndex = nextStEnd;
+        }
+        if(nextTagStartIndex>(tagEnd+1)){
+            thereIsText = "true";
+        }else{
+            thereIsText = "false";
+        }
+        //get tag name for checking
+        var tgNe = getTagName(value, start);
+        //checking if there is a possibility for expanding borders
+        
+        console.log(tgNe);
+        
+        if((tgNe!="input")||(tgNe!="img")||(tgNe!="param")||(tgNe!="br")||(tgNe!="br/")||(tgNe!="link")||(tgNe!="meta")||(tgNe!="!--")){
+            //the tag contains two parts
+            if(nextOpenTag!="true"){
+                var rightEnd = tagEndFrom(tgNe, value, start);
+                var nextStart = value.indexOf("<", scrEnd);
+                var nextStEnd = value.indexOf("</", scrEnd);
                 if(nextStart<nextStEnd){
-                    var text = value.slice(tagEnd, nextStart);
-                } else{
-                    var text = value.slice(tagEnd, nextStEnd);
+                    nextOpenTag = "true";
+                    nextTagStartIndex = nextStart; 
+                }else{
+                    nextOpenTag = "false";
+                    nextTagStartIndex = nextStEnd;
                 }
-                var sorted = sorted + text;
+            }
+            if(nextOpenTag=="true"){
+                if(thereIsText=="true"){
+                    var tag = value.slice(tagStartIndex, nextTagStartIndex-1);
+                }else{
+                    var tag = value.slice(tagStartIndex, tagEnd);
+                }
+            }
+        }else{
+            if(thereIsText=="true"){
+                    var tag = value.slice(tagStartIndex, nextTagStartIndex-1);
+            }else{
+                    var tag = value.slice(tagStartIndex, tagEnd);
             }
         }
+        var tag = value.slice(tagStartIndex, rightEnd);
+        //clean and add the expanded tag
+        var tag = cleanTag(tag);
+        var sorted = sorted + tag;
         //spring to a new string
-        if((nextStEnd<nextStart) || (nextStart<nextStEnd)){
-            var sorted = sprNstr(sorted);
-        }
-        if((nextStEnd==nextStart) && (tagStart==tagStEnd)){
-            var sorted = sprNstr(sorted);
-        }
-        if((tagStart<tagStEnd)&&(nextStEnd<=nextStart)){
-            if((tgNe=="input")|(tgNe=="img")|(tgNe=="param")){
-                var sorted = sprNstr(sorted);
-            }
-        }
-        //change tab
+        var sorted = sprNstr(sorted);
+        //add tab
         var prTab = tab;
-        if((nextStart<nextStEnd) && (tagStart<tagStEnd)){
-            //check for comments
-            if(tgNe[0]=='!'){
-                var comTruth = "true";
-            }else{
-                var comTruth = "false";
-            }    
-            //check for single tags 
-            if((tgNe=="input")|(tgNe=="img")|(tgNe=="param")|(tgNe=="br")|(tgNe=="link")|(tgNe=="script")|(comTruth =="true")){
-                var sorted = sorted + tab;
-            }else{
-                //add tab
+        if((openTag =="true" && nextOpenTag =="true")| (openTag!="true" && nextOpenTag=="true")){
+            if(tgNe!="!--"){
                 var tab = plusTab(tab);
                 var sorted = sorted + tab;
-            }
+            }else{
+                var sorted = sorted + tab;
+            } 
         }
-        if((tagStart==tagStEnd) && (nextStart<nextStEnd)){
-            var sorted = sorted + tab;
-        }
-        if((tagStart==tagStEnd) && (nextStart==nextStEnd)){
+        if((openTag=="true" && nextOpenTag!="true")| (openTag!="true" && nextOpenTag!="true")){
             var tab = minusTab(tab);
             var sorted = sorted + tab;
         }
-        if((tagStart<tagStEnd)&&(nextStEnd<=nextStart)){
-            if((tgNe=="input")|(tgNe=="img")|(tgNe=="param")){
-                var tab = minusTab(tab);
-                var sorted = sorted + tab;
-            }
-        }
         //next start
         var start = nextStart; 
-        
-    }while((nextStart!=-1)&&(nextStEnd!=-1));
+    }while(nextTagStartIndex!=-1);
     
     if(prTab!=""){
         return -1;
@@ -136,106 +130,6 @@ function sortTags(value){
     
     
 
-}
-
-function sortTagsLimited(value){
-    var tab = "";
-    var prTab = "";
-    var start = 0;
-    var sorted = "";
-    
-    do{
-        //evaluate current and next tag
-        var tagStart = value.indexOf("<", start);
-        var tagStEnd = value.indexOf("</", start);
-        var tagEnd = tagGap(value,start);
-        var nextStart = value.indexOf("<", tagEnd);
-        var nextStEnd = value.indexOf("</", tagEnd);
-        //add tag
-        //it is the end tag
-        if(tagStEnd<=tagStart){
-            var tag = value.slice(tagStEnd,tagEnd);
-            var tag = cleanTag(tag);
-        }else{
-            //it is the start tag
-            var tgNe = getTagName(value, start);
-            //get tag
-            var tag = value.slice(tagStart,tagEnd);
-            var tag = cleanTag(tag);   
-        }
-        var sorted = sorted+tag;
-
-        //add text
-        if((nextStEnd>tagEnd+1)&&(nextStart>tagEnd+1)){
-            if(tgNe=="script"){
-                var scrEnd = tagEndFrom(tgNe, value, start);
-                var text = value.slice(tagEnd, scrEnd);
-                var text = cleanTag(text);
-                var sorted = sorted + text;
-                
-                var tagEnd = scrEnd;
-                var nextStart = value.indexOf("<", scrEnd);
-                var nextStEnd = value.indexOf("</", scrEnd);
-            }else{
-                if((tagStart<tagStEnd)&&(nextStEnd<=nextStart)){
-                    var text = value.slice(tagEnd, nextStEnd);
-                    var text = cleanTag(text);
-                }
-
-                if(nextStEnd<=nextStart){
-                    var text = value.slice(tagEnd, nextStEnd);
-                    var text = cleanTag(text);
-                }else{
-                    var text = value.slice(tagEnd, nextStart);
-                    var text = cleanTag(text);
-                }
-                var sorted = sorted + text; 
-            }
-        }
-        //spring to a new string
-        if((tgNe=="input")|(tgNe=="img")|(tgNe=="param")|(tgNe=="br")|(tgNe=="br/")|(tgNe=="link")|(tgNe=="script")|(tgNe=="meta")){
-            var sorted = sprNstr(sorted);
-        }else{
-            if(tagStEnd<=tagStart){
-                var sorted = sprNstr(sorted);
-            }
-            if((tagStart<tagStEnd)&&(nextStart<nextStEnd)){
-                var sorted = sprNstr(sorted);
-            }
-        }        
-        //add tab
-        var prTab = tab;
-            //check for comments
-        if(tgNe[0]=='!'){
-            var comTruth = "true";
-        }else{
-            var comTruth = "false";
-        } 
-        if((tgNe=="input")|(tgNe=="img")|(tgNe=="param")|(tgNe=="br")|(tgNe=="br/")|(tgNe=="link")|(tgNe=="script")|(tgNe=="meta")|(comTruth =="true")){
-            if(nextStEnd<=nextStart){
-                var tab = minusTab(tab);
-                var sorted = sorted + tab;
-            }else{
-                var sorted = sorted + tab;   
-            }
-        }else{
-            if((tagStart<tagStEnd)&&(nextStart<nextStEnd)){
-                var tab = plusTab(tab);
-                var sorted = sorted + tab;
-            }
-            if((tagStEnd<=tagStart) && (nextStart<nextStEnd)){
-                var sorted = sorted + tab;
-            }
-            if((tagStEnd<=tagStart) && (nextStEnd<=nextStart)){
-                var tab = minusTab(tab);
-                var sorted = sorted + tab;
-            }
-        }
-        //next start
-        var start = nextStart; 
-    }while((nextStart!=-1)&&(nextStEnd!=-1));
-    
-    return sorted;
 }
 
 function setSelection() {
