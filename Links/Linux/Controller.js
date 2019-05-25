@@ -76,14 +76,14 @@ this.commands = [{
     description: "Unmount a device",
     text:"sudo umount /media/RaspiRoot"
   },{
-    description: "Writting in Linux",
-    text: "dd if=image.img of=/dev/sdc"
+    description: "Writting of an img",
+    text: "sudo dd if=/media/misha/hdd/myRaspImg.img of=/dev/mmcblk0"
   },{
     description: "Deleting a file in Ubuntu",
     text:"sudo rm -v  /media/RaspiRoot/ssh"
   },{
     description:"Erase a disk",
-    text:"sudo dd if=/dev/zero of=/dev/sdd bs=4k && sync"
+    text:"sudo dd if=/dev/zero of=/dev/mmcblk0 bs=4k && sync"
   },{
       description:"Create zip",
       text: "zip -r ../NewExtension.xpin.xpi * "
