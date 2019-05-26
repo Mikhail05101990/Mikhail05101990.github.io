@@ -108,6 +108,12 @@ this.commands = [{
   },{
       description:"Create an iso",
       text: "sudo mkisofs -o /media/misha/hdd/PrerequisiesSP16.iso -U /media/misha/hdd/PrerequisitesSP16"
+  },{
+      description:"Scan a host for any devices on a 22 port",
+      text: "nmap -p 22 192.168.100.*"
+  },{
+      description:"Connect to raspi",
+      text: "ssh pi@192.168.100.52"
   }]
 
     
